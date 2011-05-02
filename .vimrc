@@ -9,6 +9,7 @@ call vundle#rc()
 " original repos on github
 Bundle 'jimenezrick/vimerl'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'scrooloose/nerdtree'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
 " Bundle 'L9'
@@ -53,3 +54,10 @@ colorscheme solarized
 let g:erlangCompleteFile="~/.vim/bundle/vimerl/autoload/erlang_complete.erl"
 let g:erlangCheckFile="~/.vim/bundle/vimerl/compiler/erlang_check.erl"
   
+set nofoldenable 		" disable folding
+
+" Erlang Tags
+let g:erlang_tags_file = $HOME . '/.home/erlang_tags'
+
+command! -nargs=+ -complete=file CreateErlangTags call s:CreateTags(<q-args>)
+
