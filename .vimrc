@@ -12,6 +12,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdtree'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
+Bundle 'taglist.vim'
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
 " Bundle 'rails.vim'
@@ -21,7 +22,9 @@ Bundle 'scrooloose/nerdtree'
 
 filetype plugin indent on     " required!
 
-set tabstop=4
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 set showmatch
 set showcmd
 set number 
@@ -57,7 +60,8 @@ let g:erlangCheckFile="~/.vim/bundle/vimerl/compiler/erlang_check.erl"
 set nofoldenable 		" disable folding
 
 " Erlang Tags
-let g:erlang_tags_file = $HOME . '/.home/erlang_tags'
-
-command! -nargs=+ -complete=file CreateErlangTags call s:CreateTags(<q-args>)
-
+" let g:erlang_tags_file = $HOME . '/.home/erlang_tags'
+let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+let Tlist_WinWidth = 50
+map <F4> :TlistToggle<cr>
+map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
