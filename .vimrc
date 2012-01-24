@@ -15,6 +15,7 @@ Bundle 'mbbx6spp/vim-rebar'
 Bundle 'vim-scripts/EasyMotion'
 Bundle 'vim-scripts/tComment'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
 Bundle 'taglist.vim'
@@ -81,6 +82,7 @@ map <F8> :!$HOME/bin/pug_tags $HOME/dev/pugpharm/<CR>
 set tags=tags;/
 
 
+
 " ------------------------------------------------------------------
 " NERDTree Config
 " ------------------------------------------------------------------
@@ -95,3 +97,7 @@ map <leader>c <c-_><c-_>
 " Config
 " ------------------------------------------------------------------
 nmap <space> :
+
+" Open tag under cursor in new tab
+map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<CR>
+
