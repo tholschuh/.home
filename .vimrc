@@ -7,7 +7,8 @@ call vundle#rc()
 " My Bundles here:
 "
 " original repos on github
-Bundle 'tholschuh/vimerl'
+"Bundle 'tholschuh/vimerl'
+Bundle 'jimenezrick/vimerl'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdtree'
 Bundle 'godlygeek/tabular'
@@ -16,6 +17,9 @@ Bundle 'vim-scripts/EasyMotion'
 Bundle 'vim-scripts/tComment'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'myusuf3/numbers.vim'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
 Bundle 'taglist.vim'
@@ -59,6 +63,10 @@ set background=dark
 
 colorscheme solarized
 
+highlight SpecialComment ctermfg=blue
+highlight Conditional ctermfg=3
+" highlight Operator ctermfg=darkmagenta
+
 " change the default EasyMotion shading to something more readable with Solarized
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
@@ -66,13 +74,12 @@ hi link EasyMotionShade  Comment
 " ------------------------------------------------------------------
 " Vimerl Config
 " ------------------------------------------------------------------
-let g:erlangCompleteFile="~/.vim/bundle/vimerl/autoload/erlang_complete.erl"
-let g:erlangCheckFile="~/.vim/bundle/vimerl/compiler/erlang_check.erl"
-  
-let g:erlangHighlightErrors=0
 set nofoldenable 		" disable folding
+highlight SignColumn ctermbg=cyan
 
+" ------------------------------------------------------------------
 " Erlang Tags
+" ------------------------------------------------------------------
 let g:erlang_tags_file = $HOME . '/dev/pugpharm/tags'
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
@@ -80,7 +87,6 @@ map <F4> :TlistToggle<cr><c-w><c-w>
 map <F8> :!$HOME/bin/pug_tags $HOME/dev/pugpharm/<CR>
 
 set tags=tags;/
-
 
 
 " ------------------------------------------------------------------
@@ -94,6 +100,15 @@ map <F3> :NERDTreeToggle<cr>
 map <leader>c <c-_><c-_>
 
 " ------------------------------------------------------------------
+" ctrl-p Config
+" ------------------------------------------------------------------
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|deps$',
+  \ 'file': '\.beam$\|\.so$\|\.dll$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+" ------------------------------------------------------------------
 " Config
 " ------------------------------------------------------------------
 nmap <space> :
@@ -101,3 +116,60 @@ nmap <space> :
 " Open tag under cursor in new tab
 map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<CR>
 
+
+" ------------------------------------------------------------------
+" Tabs
+" ------------------------------------------------------------------
+function MyTabLine()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    " select the highlighting
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+
+    " set the tab page number (for mouse clicks)
+    let s .= '%' . (i + 1) . 'T'
+
+    " the label is made by MyTabLabel()
+    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+  endfor
+
+  " after the last tab fill with TabLineFill and reset tab page nr
+  let s .= '%#TabLineFill#%T'
+
+  " right-align the label to close the current tab page
+  if tabpagenr('$') > 1
+    let s .= '%=%#TabLine#%999'
+  endif
+
+  return s
+endfunction
+
+
+function MyTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  return bufname(buflist[winnr - 1])
+endfunction
+
+" set tabline=%!MyTabLine()
+
+
+" ------------------------------------------------------------------
+" Powerline 
+" ------------------------------------------------------------------
+
+set nocompatible   " Disable vi-compatibility
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show unicode glyphs
+
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+
+
+" ------------------------------------------------------------------
+" numbers.vim
+" ------------------------------------------------------------------
+nnoremap <F2> :NumbersToggle<CR>
