@@ -1,36 +1,56 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/vundle.git/ 
-call vundle#rc()
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-" My Bundles here:
+call neobundle#rc('~/.vim/bundle/')
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Bundles here:
 "
 " original repos on github
-"Bundle 'tholschuh/vimerl'
-Bundle 'jimenezrick/vimerl'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'scrooloose/nerdtree'
-Bundle 'godlygeek/tabular'
-Bundle 'mbbx6spp/vim-rebar'
-Bundle 'vim-scripts/EasyMotion'
-Bundle 'vim-scripts/tComment'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'myusuf3/numbers.vim'
-" Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+NeoBundle 'hcs42/vim-erlang-runtime'
+NeoBundle 'jimenezrick/vimerl'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'mbbx6spp/vim-rebar'
+NeoBundle 'vim-scripts/EasyMotion'
+NeoBundle 'vim-scripts/tComment'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'myusuf3/numbers.vim'
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'lukerandall/haskellmode-vim'
+
+" NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
-Bundle 'taglist.vim'
-" Bundle 'L9'
-" Bundle 'FuzzyFinder'
-" Bundle 'rails.vim'
+NeoBundle 'taglist.vim'
+" NeoBundle 'L9'
+" NeoBundle 'FuzzyFinder'
+" NeoBundle 'rails.vim'
 " non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
+" NeoBundle 'git://git.wincent.com/command-t.git'
 " ...
 
 filetype plugin indent on     " required!
+
+" Installation check.
+NeoBundleCheck
 
 set expandtab
 set shiftwidth=2
@@ -41,7 +61,11 @@ set showmatch
 set showcmd
 set number 
 set ruler
+set tw=79
+set colorcolumn=80
 "set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
+
+autocmd FileType erlang setlocal expandtab tabstop=2 shiftwidth=2 textwidth=0
 
 " ------------------------------------------------------------------
 " Solarized Colorscheme Config
@@ -76,6 +100,7 @@ hi link EasyMotionShade  Comment
 " ------------------------------------------------------------------
 set nofoldenable 		" disable folding
 highlight SignColumn ctermbg=cyan
+let erlang_show_errors = 1
 
 " ------------------------------------------------------------------
 " Erlang Tags
@@ -88,11 +113,16 @@ map <F8> :!$HOME/bin/pug_tags $HOME/dev/pugpharm/<CR>
 
 set tags=tags;/
 
+" ------------------------------------------------------------------
+" numbers.vim
+" ------------------------------------------------------------------
+nnoremap <F2> :NumbersToggle<CR>
 
 " ------------------------------------------------------------------
 " NERDTree Config
 " ------------------------------------------------------------------
 map <F3> :NERDTreeToggle<cr>
+" let NERDTreeShowLineNumbers=1
 
 " ------------------------------------------------------------------
 " tComment Config
@@ -103,7 +133,7 @@ map <leader>c <c-_><c-_>
 " ctrl-p Config
 " ------------------------------------------------------------------
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|deps$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|deps$\|\.eunit$\|tmp$',
   \ 'file': '\.beam$\|\.so$\|\.dll$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -116,44 +146,46 @@ nmap <space> :
 " Open tag under cursor in new tab
 map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<CR>
 
+nmap <tab> gt
+nmap <s-tab> gT
 
 " ------------------------------------------------------------------
 " Tabs
 " ------------------------------------------------------------------
-function MyTabLine()
-  let s = ''
-  for i in range(tabpagenr('$'))
-    " select the highlighting
-    if i + 1 == tabpagenr()
-      let s .= '%#TabLineSel#'
-    else
-      let s .= '%#TabLine#'
-    endif
+" function MyTabLine()
+"   let s = ''
+"   for i in range(tabpagenr('$'))
+"     " select the highlighting
+"     if i + 1 == tabpagenr()
+"       let s .= '%#TabLineSel#'
+"     else
+"       let s .= '%#TabLine#'
+"     endif
+" 
+"     " set the tab page number (for mouse clicks)
+"     let s .= '%' . (i + 1) . 'T'
+" 
+"     " the label is made by MyTabLabel()
+"     let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+"   endfor
+" 
+"   " after the last tab fill with TabLineFill and reset tab page nr
+"   let s .= '%#TabLineFill#%T'
+" 
+"   " right-align the label to close the current tab page
+"   if tabpagenr('$') > 1
+"     let s .= '%=%#TabLine#%999'
+"   endif
+" 
+"   return s
+" endfunction
 
-    " set the tab page number (for mouse clicks)
-    let s .= '%' . (i + 1) . 'T'
 
-    " the label is made by MyTabLabel()
-    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
-  endfor
-
-  " after the last tab fill with TabLineFill and reset tab page nr
-  let s .= '%#TabLineFill#%T'
-
-  " right-align the label to close the current tab page
-  if tabpagenr('$') > 1
-    let s .= '%=%#TabLine#%999'
-  endif
-
-  return s
-endfunction
-
-
-function MyTabLabel(n)
-  let buflist = tabpagebuflist(a:n)
-  let winnr = tabpagewinnr(a:n)
-  return bufname(buflist[winnr - 1])
-endfunction
+" function MyTabLabel(n)
+"   let buflist = tabpagebuflist(a:n)
+"   let winnr = tabpagewinnr(a:n)
+"   return bufname(buflist[winnr - 1])
+" endfunction
 
 " set tabline=%!MyTabLine()
 
@@ -168,8 +200,17 @@ set encoding=utf-8 " Necessary to show unicode glyphs
 
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
+let Powerline_colorscheme="solarized"
+
 
 " ------------------------------------------------------------------
-" numbers.vim
+" vim-surround 
 " ------------------------------------------------------------------
-nnoremap <F2> :NumbersToggle<CR>
+let g:surround_{char2nr('\\')} = "\\"
+
+
+" ------------------------------------------------------------------
+" vimshell
+" ------------------------------------------------------------------
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+let g:vimshell_prompt =  '$ '
