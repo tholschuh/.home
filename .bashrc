@@ -1,7 +1,18 @@
-alias ls='ls --color'
-alias ll='ls -la --color' 
-alias l1='ls -1 --color'
-alias l='ls --color'
+case $OSTYPE in 
+  darwin*) 
+  alias ls='ls -G'
+  alias ll='ls -la -G'
+  alias l1='ls -1 -G'
+  alias l='ls -G'
+  ;;
+  linux-gnu)
+  alias ls='ls --color'
+  alias ll='ls -la --color'
+  alias l1='ls -1 --color'
+  alias l='ls --color'
+  ;;
+esac
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias pgrep='pgrep -fl'
