@@ -35,7 +35,10 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'lukerandall/haskellmode-vim'
+" haskell plugins
+NeoBundle 'dag/vim2hs.git'
+NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'eagletmt/ghcmod-vim.git'
 
 " NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
@@ -66,6 +69,7 @@ set colorcolumn=80
 "set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
 
 autocmd FileType erlang setlocal expandtab tabstop=2 shiftwidth=2 textwidth=0
+autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=4 shiftwidth=4 smarttab shiftround nojoinspaces    
 
 " ------------------------------------------------------------------
 " Solarized Colorscheme Config
