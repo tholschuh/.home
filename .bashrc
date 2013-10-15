@@ -9,6 +9,7 @@ alias t='tree'
 alias jbos='jobs'
 alias rkae='rake'
 alias emacs='emacs -nw'
+alias ack='ack-grep'
 
 source $HOME/.home/local/bin/bashmarks.sh
 

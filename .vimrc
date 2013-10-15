@@ -22,6 +22,7 @@ NeoBundle 'vim-scripts/EasyMotion'
 NeoBundle 'vim-scripts/tComment'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-repeat'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'myusuf3/numbers.vim'
@@ -36,7 +37,7 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'lukerandall/haskellmode-vim'
-
+NeoBundle 'mileszs/ack.vim'
 " NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
 NeoBundle 'taglist.vim'
@@ -61,7 +62,7 @@ set showmatch
 set showcmd
 set number 
 set ruler
-set tw=79
+set textwidth=79
 set colorcolumn=80
 "set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
 
