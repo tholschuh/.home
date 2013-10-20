@@ -69,7 +69,8 @@ set colorcolumn=80
 "set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
 
 autocmd FileType erlang setlocal expandtab tabstop=2 shiftwidth=2 textwidth=0
-autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=4 shiftwidth=4 smarttab shiftround nojoinspaces    
+autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2 shiftwidth=2 smarttab shiftround nojoinspaces    
+autocmd FileType vimshell setlocal textwidth=0
 
 " ------------------------------------------------------------------
 " Solarized Colorscheme Config
