@@ -9,8 +9,10 @@ call neobundle#rc('~/.vim/bundle/')
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Bundles here:
-"
+" ------------------------------------------------------------------
+" Bundles Config
+" ------------------------------------------------------------------
+
 " original repos on github
 NeoBundle 'hcs42/vim-erlang-runtime'
 NeoBundle 'jimenezrick/vimerl'
@@ -36,8 +38,14 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'lukerandall/haskellmode-vim'
+
 NeoBundle 'mileszs/ack.vim'
+
+" haskell plugins
+NeoBundle 'dag/vim2hs.git'
+NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'eagletmt/ghcmod-vim.git'
+
 " NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
 NeoBundle 'taglist.vim'
@@ -53,6 +61,10 @@ filetype plugin indent on     " required!
 " Installation check.
 NeoBundleCheck
 
+" ------------------------------------------------------------------
+" Config
+" ------------------------------------------------------------------
+
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -64,9 +76,19 @@ set number
 set ruler
 set textwidth=79
 set colorcolumn=80
-"set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
 
 autocmd FileType erlang setlocal expandtab tabstop=2 shiftwidth=2 textwidth=0
+autocmd FileType haskell setlocal expandtab tabstop=8 softtabstop=2 shiftwidth=2 smarttab shiftround nojoinspaces    
+
+""" some key mappings
+nmap <space> :
+
+" Open tag under cursor in new tab
+map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<CR>
+
+" switch tabs
+nmap <tab> gt
+nmap <s-tab> gT
 
 " ------------------------------------------------------------------
 " Solarized Colorscheme Config
@@ -92,7 +114,11 @@ highlight SpecialComment ctermfg=blue
 highlight Conditional ctermfg=3
 " highlight Operator ctermfg=darkmagenta
 
-" change the default EasyMotion shading to something more readable with Solarized
+
+" ------------------------------------------------------------------
+" EasyMotion Config
+" ------------------------------------------------------------------
+" change EasyMotion shading to something more readable with Solarized
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
@@ -139,16 +165,6 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-" ------------------------------------------------------------------
-" Config
-" ------------------------------------------------------------------
-nmap <space> :
-
-" Open tag under cursor in new tab
-map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<CR>
-
-nmap <tab> gt
-nmap <s-tab> gT
 
 " ------------------------------------------------------------------
 " Tabs
@@ -208,7 +224,6 @@ let Powerline_colorscheme="solarized"
 " vim-surround 
 " ------------------------------------------------------------------
 let g:surround_{char2nr('\\')} = "\\"
-
 
 " ------------------------------------------------------------------
 " vimshell

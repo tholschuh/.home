@@ -1,7 +1,24 @@
-alias ls='ls --color'
-alias ll='ls -la --color' 
-alias l1='ls -1 --color'
-alias l='ls --color'
+case $OSTYPE in 
+  darwin*) 
+  alias ls='ls -G'
+  alias ll='ls -la -G'
+  alias l1='ls -1 -G'
+  alias l='ls -G'
+  vim_path='/usr/local/Cellar/vim/7.4/bin/vim'
+  alias vim=$vim_path
+  export EDITOR=$vim_path
+
+  ;;
+  linux-gnu)
+  alias ls='ls --color'
+  alias ll='ls -la --color'
+  alias l1='ls -1 --color'
+  alias l='ls --color'
+
+  export EDITOR=/usr/bin/vim
+  ;;
+esac
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias pgrep='pgrep -fl'
@@ -14,9 +31,8 @@ alias ack='ack-grep'
 source $HOME/.home/local/bin/bashmarks.sh
 
 # bash autocomplete for SSH
-complete -W "$(echo $(grep '^ssh ' .bash_history | sort -u | sed 's/^ssh //'))" ssh
+complete -W "$(echo $(grep '^ssh ' $HOME/.bash_history | sort -u | sed 's/^ssh //'))" ssh
 
-export EDITOR=/usr/bin/vim
 export OTP_HOME=/opt/erlang
 
 #see http://caliban.org/bash/
