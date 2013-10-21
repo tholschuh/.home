@@ -90,7 +90,6 @@ map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<CR>
 " switch tabs
 nmap <tab> gt
 nmap <s-tab> gT
-=======
 
 " ------------------------------------------------------------------
 " Solarized Colorscheme Config
