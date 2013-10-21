@@ -78,7 +78,8 @@ set textwidth=79
 set colorcolumn=80
 
 autocmd FileType erlang setlocal expandtab tabstop=2 shiftwidth=2 textwidth=0
-autocmd FileType haskell setlocal expandtab tabstop=8 softtabstop=2 shiftwidth=2 smarttab shiftround nojoinspaces    
+autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2 shiftwidth=2 smarttab shiftround nojoinspaces    
+autocmd FileType vimshell setlocal textwidth=0
 
 """ some key mappings
 nmap <space> :
@@ -89,6 +90,7 @@ map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<CR>
 " switch tabs
 nmap <tab> gt
 nmap <s-tab> gT
+=======
 
 " ------------------------------------------------------------------
 " Solarized Colorscheme Config
