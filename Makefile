@@ -4,3 +4,4 @@ links :
 	ln -s ./.vim ~/.vim
 	ln -s ./.irssi ~/.irssi
 	ln -s ./ghci.conf ~/.ghc/ghci.conf
+	ln -s ./xmonad/ ~/.xmonad
