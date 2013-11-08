@@ -91,6 +91,10 @@ map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<CR>
 nmap <tab> gt
 nmap <s-tab> gT
 
+" buffer resize
+map - <c-w><
+map + <c-w>>
+
 " ------------------------------------------------------------------
 " Solarized Colorscheme Config
 " ------------------------------------------------------------------
