@@ -18,6 +18,7 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
+NeoBundle 'Raimondi/delimitMate'
 
 """ VCS
 NeoBundle 'tpope/vim-fugitive'
