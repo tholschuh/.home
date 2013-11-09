@@ -30,7 +30,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'bling/vim-bufferline'
 NeoBundle 'myusuf3/numbers.vim'
 
-""" Navigation  
+""" Navigation
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'vim-scripts/EasyMotion'
 
@@ -50,12 +50,12 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 NeoBundle 'Shougo/vimshell'
 
-""" Erlang 
+""" Erlang
 NeoBundle 'hcs42/vim-erlang-runtime'
 NeoBundle 'jimenezrick/vimerl'
 NeoBundle 'mbbx6spp/vim-rebar'
 
-""" Haskell 
+""" Haskell
 NeoBundle 'dag/vim2hs.git'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim'
@@ -86,7 +86,7 @@ set smartindent
 set autoindent
 set showmatch
 set showcmd
-set number 
+set number
 set ruler
 set textwidth=79
 set colorcolumn=80
@@ -95,12 +95,15 @@ set laststatus=2   " Always show statusline
 
 set encoding=utf-8 " Necessary to show unicode glyphs
 
-set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+set t_Co=16 " Explicitly tell vim that the terminal supports 256 colors
 
 autocmd FileType erlang setlocal expandtab tabstop=2 shiftwidth=2 textwidth=0
-autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2 
-      \ shiftwidth=2 smarttab shiftround nojoinspaces    
+autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2
+      \ shiftwidth=2 smarttab shiftround nojoinspaces
 autocmd FileType vimshell setlocal textwidth=0
+
+autocmd FileType erlang,haskell,python,ruby,java,scala,vim
+  \ autocmd BufWritePre <buffer> :call TrimTrailingWhiteSpace()
 
 """ some key mappings
 nmap <space> :
@@ -194,7 +197,7 @@ highlight SignifySignDelete cterm=bold ctermbg=14 ctermfg=9
 highlight SignifySignChange cterm=bold ctermbg=14 ctermfg=2
 
 " ------------------------------------------------------------------
-" ctrl-p 
+" ctrl-p
 " ------------------------------------------------------------------
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|deps$\|\.eunit$\|tmp$',
@@ -203,20 +206,20 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " ------------------------------------------------------------------
-" Airline 
+" Airline
 " ------------------------------------------------------------------
 " let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 
 " ------------------------------------------------------------------
-" vim-surround 
+" vim-surround
 " ------------------------------------------------------------------
 let g:surround_{char2nr('\\')} = "\\"
 
 " ------------------------------------------------------------------
-" bufferline 
+" bufferline
 " ------------------------------------------------------------------
-let g:bufferline_echo = 0
+let g:bufferline_echo = 1
 
 " ------------------------------------------------------------------
 " vimshell
@@ -225,3 +228,19 @@ let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
 
 
+" ------------------------------------------------------------------
+" whitespace
+" ------------------------------------------------------------------
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+highlight MixedWhitespace ctermbg=red guibg=red
+match MixedWhitespace /^\t\+/
+
+function! TrimTrailingWhiteSpace()
+  %s/\s\+$//e
+endfunction
