@@ -39,6 +39,9 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'dag/vim2hs.git'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim.git'
+ 
+" scala plugins 
+NeoBundle 'derekwyatt/vim-scala'
 
 " NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
@@ -64,8 +67,9 @@ set showmatch
 set showcmd
 set number 
 set ruler
-set tw=79
+set textwidth=79
 set colorcolumn=80
+set nofoldenable 		" disable folding
 "set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
 
 autocmd FileType erlang setlocal expandtab tabstop=2 shiftwidth=2 textwidth=0
@@ -95,6 +99,7 @@ colorscheme solarized
 highlight SpecialComment ctermfg=blue
 highlight Conditional ctermfg=3
 " highlight Operator ctermfg=darkmagenta
+highlight SignColumn ctermbg=cyan
 
 " change the default EasyMotion shading to something more readable with Solarized
 hi link EasyMotionTarget ErrorMsg
@@ -103,8 +108,6 @@ hi link EasyMotionShade  Comment
 " ------------------------------------------------------------------
 " Vimerl Config
 " ------------------------------------------------------------------
-set nofoldenable 		" disable folding
-highlight SignColumn ctermbg=cyan
 let erlang_show_errors = 1
 
 " ------------------------------------------------------------------
