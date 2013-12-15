@@ -26,11 +26,12 @@ alias t='tree'
 alias jbos='jobs'
 alias rkae='rake'
 alias emacs='emacs -nw'
+alias ack='ack-grep'
 
 source $HOME/.home/local/bin/bashmarks.sh
 
 # bash autocomplete for SSH
-complete -W "$(echo $(grep '^ssh ' .bash_history | sort -u | sed 's/^ssh //'))" ssh
+complete -W "$(echo $(grep '^ssh ' $HOME/.bash_history | sort -u | sed 's/^ssh //'))" ssh
 
 export OTP_HOME=/opt/erlang
 
