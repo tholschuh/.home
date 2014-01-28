@@ -19,6 +19,7 @@ case $OSTYPE in
   ;;
 esac
 
+# aliases (prefer functions over aliases)
 alias ..='cd ..'
 alias ...='cd ../..'
 alias pgrep='pgrep -fl'
@@ -26,7 +27,16 @@ alias t='tree'
 alias jbos='jobs'
 alias rkae='rake'
 alias emacs='emacs -nw'
-alias ack='ack-grep'
+
+function ack {
+  case $OSTYPE in
+  linux-gnu)
+    ack-grep $@
+    ;;
+  *)
+    ack $@
+  esac
+}
 
 source $HOME/.home/local/bin/bashmarks.sh
 
