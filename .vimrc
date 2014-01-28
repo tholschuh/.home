@@ -25,10 +25,13 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'mhinz/vim-signify'
 
 """ UI
-NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'bling/vim-bufferline'
 NeoBundle 'myusuf3/numbers.vim'
+" colorschemes
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'trapd00r/neverland-vim-theme'
+NeoBundle 'Pychimp/vim-luna'
 
 """ Navigation
 NeoBundle 'scrooloose/nerdtree'
@@ -60,6 +63,15 @@ NeoBundle 'dag/vim2hs.git'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim'
 
+" Scala
+NeoBundle 'derekwyatt/vim-scala'
+
+""" Elixir
+NeoBundle 'elixir-lang/vim-elixir'
+
+""" Markdown
+NeoBundle 'plasticboy/vim-markdown'
+
 " NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
 NeoBundle 'taglist.vim'
@@ -90,22 +102,22 @@ set number
 set ruler
 set textwidth=79
 set colorcolumn=80
-set laststatus=2   " Always show statusline
-set encoding=utf-8 " Necessary to show unicode glyphs
-set t_Co=256   " Explicitly tell vim that the terminal supports 256 colors
+set splitbelow     " horizontal split new window below current window
+set splitright     " vertical split new window right of current window
+set nofoldenable   " disable folding
+set laststatus=2   " always show statusline
+set encoding=utf-8 " necessary to show unicode glyphs
+set t_Co=256       " Explicitly tell vim that the terminal supports 256 colors
 
 autocmd FileType erlang setlocal expandtab tabstop=2 shiftwidth=2 textwidth=0
 autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2
       \ shiftwidth=2 smarttab shiftround nojoinspaces
 autocmd FileType vimshell setlocal textwidth=0
 
-autocmd FileType erlang,haskell,python,ruby,java,scala,vim
-  \ autocmd BufWritePre <buffer> :call TrimTrailingWhiteSpace()
-
 """ some key mappings
 nmap <space> :
 
-" Open tag under cursor in new tab
+" open tag under cursor in new tab
 map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<CR>
 
 " switch tabs
@@ -119,10 +131,14 @@ map <c-j> 2<c-w>+
 map <c-k> 2<c-w>-
 
 " ------------------------------------------------------------------
-" Solarized Colorscheme Config
+" colorscheme config
 " ------------------------------------------------------------------
 syntax enable
 set background=dark
+
+colorscheme solarized
+"colorscheme neverland-darker
+"colorscheme luna
 
 " The following items are available options, but do not need to be
 " included in your .vimrc as they are currently set to their defaults.
@@ -136,11 +152,11 @@ set background=dark
 " let g:solarized_visibility="normal"
 " let g:solarized_menu=1
 
-colorscheme solarized
 
 highlight SpecialComment ctermfg=blue
 highlight Conditional ctermfg=3
 " highlight Operator ctermfg=darkmagenta
+highlight SignColumn ctermbg=cyan
 
 
 " ------------------------------------------------------------------
@@ -223,7 +239,6 @@ let g:bufferline_echo = 1
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
 
-
 " ------------------------------------------------------------------
 " whitespace
 " ------------------------------------------------------------------
@@ -240,3 +255,32 @@ match MixedWhitespace /^\t\+/
 function! TrimTrailingWhiteSpace()
   %s/\s\+$//e
 endfunction
+
+" automatically trim trailing whitespace for certain file types
+autocmd FileType erlang,haskell,python,ruby,java,scala,vim,cpp,c
+  \ autocmd BufWritePre <buffer> :call TrimTrailingWhiteSpace()
+" ------------------------------------------------------------------
+
+" ------------------------------------------------------------------
+" scala
+" ------------------------------------------------------------------
+
+function! s:start_sbt()
+  if !has_key(t:, 'sbt_cmds')
+    "let t:sbt_cmds = [input('t:sbt_cmds[0] = ')]
+    let t:sbt_cmds = ['compile']
+    echo "let t:sbt_cmd = 'compile'"
+  endif
+  execute 'VimShellInteractive sbt'
+  stopinsert
+  let t:sbt_bufname = bufname('%')
+  wincmd H
+  wincmd p
+endfunction
+
+command! -nargs=0 StartSBT call <SID>start_sbt()"])]"
+
+" ------------------------------------------------------------------
+" markdown
+" ------------------------------------------------------------------
+let g:vim_markdown_folding_disabled=1
