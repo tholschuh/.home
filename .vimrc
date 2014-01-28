@@ -79,7 +79,7 @@ NeoBundleCheck
 " Config
 " ------------------------------------------------------------------
 
-set expandtab
+set expandtab     " expand tabs to spaces
 set shiftwidth=2
 set softtabstop=2
 set smartindent
@@ -90,12 +90,9 @@ set number
 set ruler
 set textwidth=79
 set colorcolumn=80
-
 set laststatus=2   " Always show statusline
-
 set encoding=utf-8 " Necessary to show unicode glyphs
-
-set t_Co=16 " Explicitly tell vim that the terminal supports 256 colors
+set t_Co=256   " Explicitly tell vim that the terminal supports 256 colors
 
 autocmd FileType erlang setlocal expandtab tabstop=2 shiftwidth=2 textwidth=0
 autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2
@@ -154,15 +151,14 @@ hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
 " ------------------------------------------------------------------
-" Vimerl Config
+" Erlang
 " ------------------------------------------------------------------
+""" vimerl
 set nofoldenable 		" disable folding
 highlight SignColumn ctermbg=cyan
 let erlang_show_errors = 1
 
-" ------------------------------------------------------------------
-" Erlang Tags
-" ------------------------------------------------------------------
+""" erlang tags
 let g:erlang_tags_file = $HOME . '/dev/pugpharm/tags'
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
@@ -206,7 +202,7 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " ------------------------------------------------------------------
-" Airline
+" airline
 " ------------------------------------------------------------------
 " let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
