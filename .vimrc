@@ -160,6 +160,11 @@ highlight SignColumn ctermbg=cyan
 
 
 " ------------------------------------------------------------------
+" NERDTree config
+" ------------------------------------------------------------------
+let NERDTreeShowHidden=1
+
+" ------------------------------------------------------------------
 " EasyMotion Config
 " ------------------------------------------------------------------
 " change EasyMotion shading to something more readable with Solarized
