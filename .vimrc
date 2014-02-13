@@ -19,6 +19,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'tpope/vim-jdaddy'
 
 """ VCS
 NeoBundle 'tpope/vim-fugitive'
