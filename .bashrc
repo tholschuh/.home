@@ -1,33 +1,19 @@
+## default editor
 case $OSTYPE in
+
   darwin*)
-  alias ls='ls -G'
-  alias ll='ls -la -G'
-  alias l1='ls -1 -G'
-  alias l='ls -G'
   vim_path='/usr/local/Cellar/vim/7.4/bin/vim'
   alias vim=$vim_path
   export EDITOR=$vim_path
-
   ;;
-  linux-gnu)
-  alias ls='ls --color'
-  alias ll='ls -la --color'
-  alias l1='ls -1 --color'
-  alias l='ls --color'
 
+  linux-gnu)
   export EDITOR=/usr/bin/vim
   ;;
+
 esac
 
-alias ..='cd ..'
-alias ...='cd ../..'
-alias pgrep='pgrep -fl'
-alias t='tree'
-alias jbos='jobs'
-alias rkae='rake'
-alias emacs='emacs -nw'
-alias ack='ack'
-
+## bash bookmarks
 source $HOME/.home/local/bin/bashmarks.sh
 
 # bash autocomplete for SSH
@@ -37,5 +23,4 @@ export OTP_HOME=/opt/erlang
 
 #see http://caliban.org/bash/
 set -o vi
-
 

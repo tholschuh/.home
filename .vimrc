@@ -24,6 +24,7 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'tpope/vim-jdaddy'
 
 """ VCS
 NeoBundle 'tpope/vim-fugitive'
@@ -98,7 +99,7 @@ NeoBundleCheck
 " Config
 " ------------------------------------------------------------------
 
-set expandtab
+set expandtab     " expand tabs to spaces
 set shiftwidth=2
 set softtabstop=2
 set smartindent
@@ -168,6 +169,11 @@ highlight SignColumn ctermbg=cyan
 
 
 " ------------------------------------------------------------------
+" NERDTree config
+" ------------------------------------------------------------------
+let NERDTreeShowHidden=1
+
+" ------------------------------------------------------------------
 " EasyMotion Config
 " ------------------------------------------------------------------
 " change EasyMotion shading to something more readable with Solarized
@@ -175,13 +181,14 @@ hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
 " ------------------------------------------------------------------
-" Vimerl Config
+" Erlang
 " ------------------------------------------------------------------
+""" vimerl
+set nofoldenable 		" disable folding
+highlight SignColumn ctermbg=cyan
 let erlang_show_errors = 1
 
-" ------------------------------------------------------------------
-" Erlang Tags
-" ------------------------------------------------------------------
+""" erlang tags
 let g:erlang_tags_file = $HOME . '/dev/pugpharm/tags'
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
@@ -225,7 +232,7 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " ------------------------------------------------------------------
-" Airline
+" airline
 " ------------------------------------------------------------------
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
