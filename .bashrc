@@ -1,5 +1,5 @@
-case $OSTYPE in 
-  darwin*) 
+case $OSTYPE in
+  darwin*)
   alias ls='ls -G'
   alias ll='ls -la -G'
   alias l1='ls -1 -G'
@@ -26,7 +26,7 @@ alias t='tree'
 alias jbos='jobs'
 alias rkae='rake'
 alias emacs='emacs -nw'
-alias ack='ack-grep'
+alias ack='ack'
 
 source $HOME/.home/local/bin/bashmarks.sh
 
