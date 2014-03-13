@@ -1,3 +1,8 @@
+" ------------------------------------------------------------------
+" .vimrc
+"
+" ------------------------------------------------------------------
+
 set nocompatible               " be iMproved
 filetype off                   " required!
 
@@ -14,9 +19,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " ------------------------------------------------------------------
 
 """ Editing
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'Raimondi/delimitMate'
 
@@ -26,8 +31,10 @@ NeoBundle 'mhinz/vim-signify'
 
 """ UI
 NeoBundle 'bling/vim-airline'
+NeoBundle 'Lokaltog/powerline-fonts'
 NeoBundle 'bling/vim-bufferline'
 NeoBundle 'myusuf3/numbers.vim'
+NeoBundle 'roman/golden-ratio'
 " colorschemes
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'trapd00r/neverland-vim-theme'
@@ -108,6 +115,7 @@ set nofoldenable   " disable folding
 set laststatus=2   " always show statusline
 set encoding=utf-8 " necessary to show unicode glyphs
 set t_Co=256       " Explicitly tell vim that the terminal supports 256 colors
+
 
 autocmd FileType erlang setlocal expandtab tabstop=2 shiftwidth=2 textwidth=0
 autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2
@@ -191,7 +199,7 @@ nnoremap <F2> :NumbersToggle<CR>
 " NERDTree Config
 " ------------------------------------------------------------------
 map <F3> :NERDTreeToggle<cr>
-" let NERDTreeShowLineNumbers=1
+let NERDTreeShowLineNumbers=1
 
 " ------------------------------------------------------------------
 " Signify Config
@@ -219,8 +227,13 @@ let g:ctrlp_custom_ignore = {
 " ------------------------------------------------------------------
 " Airline
 " ------------------------------------------------------------------
-" let g:airline_theme='solarized'
+let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
 
 " ------------------------------------------------------------------
 " vim-surround
@@ -230,7 +243,7 @@ let g:surround_{char2nr('\\')} = "\\"
 " ------------------------------------------------------------------
 " bufferline
 " ------------------------------------------------------------------
-let g:bufferline_echo = 1
+let g:bufferline_echo = 0
 
 " ------------------------------------------------------------------
 " vimshell
@@ -256,7 +269,7 @@ function! TrimTrailingWhiteSpace()
 endfunction
 
 " automatically trim trailing whitespace for certain file types
-autocmd FileType erlang,haskell,python,ruby,java,scala,vim,cpp,c
+autocmd FileType erlang,haskell,python,ruby,java,scala,vim,cpp,c,md
   \ autocmd BufWritePre <buffer> :call TrimTrailingWhiteSpace()
 " ------------------------------------------------------------------
 
