@@ -1,4 +1,3 @@
-" ------------------------------------------------------------------
 " .vimrc
 "
 " ------------------------------------------------------------------
@@ -21,10 +20,13 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 """ Editing
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'godlygeek/tabular'
-NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-repeat'
-NeoBundle 'Raimondi/delimitMate'
+"NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'tpope/vim-jdaddy'
+NeoBundle 'terryma/vim-expand-region'
+" NeoBundle 'tpope/sleuth'
 
 """ VCS
 NeoBundle 'tpope/vim-fugitive'
@@ -40,6 +42,7 @@ NeoBundle 'roman/golden-ratio'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'trapd00r/neverland-vim-theme'
 NeoBundle 'Pychimp/vim-luna'
+NeoBundle 'ciaranm/inkpot'
 
 """ Navigation
 NeoBundle 'scrooloose/nerdtree'
@@ -62,9 +65,20 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/vimshell'
 
 """ Erlang
-NeoBundle 'hcs42/vim-erlang-runtime'
-NeoBundle 'jimenezrick/vimerl'
-NeoBundle 'mbbx6spp/vim-rebar'
+NeoBundle 'tpope/vim-dispatch.git'     "  required by other vim-erlang plugins
+NeoBundle 'vim-erlang/erlang-motions.vim.git'
+NeoBundle 'vim-erlang/vim-erlang-runtime.git'
+NeoBundle 'vim-erlang/vim-erlang-compiler.git'
+NeoBundle 'vim-erlang/vim-dialyzer.git'
+NeoBundle 'fishcakez/rebar_vim_plugin.git'
+NeoBundle 'vim-erlang/vim-rebar.git'
+NeoBundle 'vim-erlang/vim-erlang-skeletons.git'
+NeoBundle 'vim-erlang/vim-erlang-omnicomplete.git'
+NeoBundle 'vim-erlang/vim-erlang-tags.git'
+
+" NeoBundle 'hcs42/vim-erlang-runtime'
+" NeoBundle 'jimenezrick/vimerl'
+" NeoBundle 'mbbx6spp/vim-rebar'
 
 """ Haskell
 NeoBundle 'dag/vim2hs.git'
@@ -123,8 +137,23 @@ autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2
       \ shiftwidth=2 smarttab shiftround nojoinspaces
 autocmd FileType vimshell setlocal textwidth=0
 
+
+""" map leader to space bar
+let mapleader = "\<Space>"
+
 """ some key mappings
-nmap <space> :
+" save on space-w
+nnoremap <Leader>w :w<CR>
+" delete buffer on space-q
+nnoremap <Leader>q :bd<CR>
+" vertical split on space-v
+nnoremap <Leader>v :vsplit<CR>
+" edit file on space-e
+nnoremap <Leader>e :e<SPACE>
+
+" region expanding
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " open tag under cursor in new tab
 map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<CR>
@@ -146,6 +175,7 @@ syntax enable
 set background=dark
 
 colorscheme solarized
+"colorscheme inkpot
 "colorscheme neverland-darker
 "colorscheme luna
 
@@ -183,19 +213,15 @@ hi link EasyMotionShade  Comment
 " ------------------------------------------------------------------
 " Erlang
 " ------------------------------------------------------------------
-""" vimerl
-set nofoldenable 		" disable folding
-highlight SignColumn ctermbg=cyan
-let erlang_show_errors = 1
 
-""" erlang tags
-let g:erlang_tags_file = $HOME . '/dev/pugpharm/tags'
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_WinWidth = 50
-map <F4> :TlistToggle<cr><c-w><c-w>
-map <F8> :!$HOME/bin/pug_tags $HOME/dev/pugpharm/<CR>
+" vim-erlang-tags
+set runtimepath^='$HOME/.vim/bundle/vim-erlang-tags'
+" set tags^='$HOME/.vim/bundle/vim-erlang-tags'
 
-set tags=tags;/
+" vim-erlang-skeletons
+let g:erl_author="Tilman Holschuh <tholschuh@pugpharm.com>"
+let g:erl_company="Pug Pharm Productions, Inc."
+let g:erl_replace_buffer=1
 
 " ------------------------------------------------------------------
 " numbers.vim
