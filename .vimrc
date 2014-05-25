@@ -46,7 +46,7 @@ NeoBundle 'ciaranm/inkpot'
 
 """ Navigation
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'vim-scripts/EasyMotion'
+NeoBundle 'Lokaltog/vim-easymotion'
 
 """ Search
 NeoBundle 'kien/ctrlp.vim'
