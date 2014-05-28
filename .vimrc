@@ -302,7 +302,7 @@ function! TrimTrailingWhiteSpace()
 endfunction
 
 " automatically trim trailing whitespace for certain file types
-autocmd FileType erlang,haskell,python,ruby,java,scala,vim,cpp,c,md
+autocmd FileType erlang,haskell,python,ruby,java,scala,vim,cpp,c,markdown
   \ autocmd BufWritePre <buffer> :call TrimTrailingWhiteSpace()
 " ------------------------------------------------------------------
 
