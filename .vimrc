@@ -30,9 +30,9 @@ NeoBundle 'terryma/vim-expand-region'
 
 """ VCS
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'mhinz/vim-signify'
+NeoBundle 'airblade/vim-gitgutter'
+" NeoBundle 'mhinz/vim-signify'
 " NeoBundle 'FriedSock/smeargle'
-" NeoBundle 'airblade/vim-gitgutter'
 
 """ UI
 NeoBundle 'bling/vim-airline'
@@ -247,16 +247,23 @@ let NERDTreeShowLineNumbers=1
 " ------------------------------------------------------------------
 " Signify Config
 " ------------------------------------------------------------------
-map <F5> :SignifyToggle<cr>
-let g:signify_disable_by_default = 1
-let g:signify_sign_color_inherit_from_linenr = 1
-"let g:signify_sign_weight = 'NONE'
-highlight link SignifySignAdd    DiffAdd
-highlight link SignifySignChange DiffChange
-highlight link SignifySignDelete DiffDelete
-highlight SignifySignAdd    cterm=bold ctermbg=14 ctermfg=5
-highlight SignifySignDelete cterm=bold ctermbg=14 ctermfg=9
-highlight SignifySignChange cterm=bold ctermbg=14 ctermfg=2
+" map <F5> :SignifyToggle<cr>
+" let g:signify_disable_by_default = 1
+" let g:signify_sign_color_inherit_from_linenr = 1
+" "let g:signify_sign_weight = 'NONE'
+" highlight link SignifySignAdd    DiffAdd
+" highlight link SignifySignChange DiffChange
+" highlight link SignifySignDelete DiffDelete
+" highlight SignifySignAdd    cterm=bold ctermbg=14 ctermfg=5
+" highlight SignifySignDelete cterm=bold ctermbg=14 ctermfg=9
+" highlight SignifySignChange cterm=bold ctermbg=14 ctermfg=2
+
+" ------------------------------------------------------------------
+" gitgutter
+" ------------------------------------------------------------------
+map <F4> :GitGutterToggle<cr>
+highlight clear SignColumn
+
 
 " ------------------------------------------------------------------
 " ctrl-p
