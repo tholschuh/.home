@@ -20,6 +20,7 @@ esac
 # simple aliases (prefer functions over aliases)
 alias ..='cd ..'
 alias ...='cd ../..'
+alias sl='ls'
 alias pgrep='pgrep -fl'
 alias t='tree'
 alias jbos='jobs'

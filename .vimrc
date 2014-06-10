@@ -53,7 +53,15 @@ NeoBundle 'Lokaltog/vim-easymotion'
 """ Search
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'mileszs/ack.vim'
-NeoBundle 'Shougo/neocomplcache.vim'
+" NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'Valloric/YouCompleteMe', {
+      \ 'build' : {
+      \     'windows' : './install.sh',
+      \     'cygwin' : './install.sh',
+      \     'mac' : './install.sh',
+      \     'unix' : './install.sh',
+      \    },
+      \ }
 
 """ Shell
 NeoBundle 'Shougo/vimproc', {
@@ -75,7 +83,7 @@ NeoBundle 'vim-erlang/vim-dialyzer.git'
 NeoBundle 'fishcakez/rebar_vim_plugin.git'
 NeoBundle 'vim-erlang/vim-rebar.git'
 NeoBundle 'vim-erlang/vim-erlang-skeletons.git'
-NeoBundle 'vim-erlang/vim-erlang-omnicomplete.git'
+" NeoBundle 'vim-erlang/vim-erlang-omnicomplete.git'
 NeoBundle 'vim-erlang/vim-erlang-tags.git'
 
 " NeoBundle 'hcs42/vim-erlang-runtime'
@@ -300,7 +308,7 @@ function! TrimTrailingWhiteSpace()
 endfunction
 
 " automatically trim trailing whitespace for certain file types
-autocmd FileType erlang,haskell,python,ruby,java,scala,vim,cpp,c,md
+autocmd FileType erlang,haskell,python,ruby,java,scala,vim,cpp,c,markdown
   \ autocmd BufWritePre <buffer> :call TrimTrailingWhiteSpace()
 " ------------------------------------------------------------------
 
