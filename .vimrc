@@ -31,6 +31,7 @@ NeoBundle 'terryma/vim-expand-region'
 """ VCS
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tpope/vim-git'
 " NeoBundle 'mhinz/vim-signify'
 " NeoBundle 'FriedSock/smeargle'
 
