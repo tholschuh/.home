@@ -2,9 +2,7 @@
 case $OSTYPE in
 
   darwin*)
-  vim_path='/usr/local/Cellar/vim/7.4/bin/vim'
-  alias vim=$vim_path
-  export EDITOR=$vim_path
+  export EDITOR=/usr/bin/vim
   ;;
 
   linux-gnu)
@@ -16,10 +14,18 @@ esac
 ## bash bookmarks
 source $HOME/.home/local/bin/bashmarks.sh
 
+## aliases
+case $OSTYPE in
+
+  darwin*)
+    source $HOME/.home/.bash_aliases
+
+  ;;
+esac
+
 # bash autocomplete for SSH
 complete -W "$(echo $(grep '^ssh ' $HOME/.bash_history | sort -u | sed 's/^ssh //'))" ssh
 
-export OTP_HOME=/opt/erlang
 
 #see http://caliban.org/bash/
 set -o vi

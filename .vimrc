@@ -125,8 +125,8 @@ NeoBundleCheck
 " ------------------------------------------------------------------
 
 set expandtab     " expand tabs to spaces
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 set smartindent
 set autoindent
 set showmatch
