@@ -27,14 +27,3 @@ alias jbos='jobs'
 alias rkae='rake'
 alias emacs='emacs -nw'
 
-function ack {
-  case $OSTYPE in
-  linux-gnu)   # derp ubuntu
-    ack-grep $@
-    ;;
-  *)
-    ack $@
-  esac
-}
-
-
