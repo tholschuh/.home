@@ -8,3 +8,4 @@ set sort = threads
 set header_cache = "~/.mutt/cache/headers"
 set message_cachedir = "~/.mutt/cache/messages"
 
+auto_view text/html
