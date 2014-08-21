@@ -1,0 +1,11 @@
+set imap_user = "user@gmail.com"
+set imap_pass = ""
+set from = "user@gmail.com"
+set realname = "user"
+set hostname = gmail.com
+set folder = "imaps://user@imap.gmail.com:993"
+set spoolfile = "imaps://user@imap.gmail.com/INBOX"
+set postponed = "imaps://user@imap.gmail.com/[Gmail]/Drafts"
+set record = "imaps://user@imap.gmail.com/[Gmail]/Sent Mail"
+set smtp_url = "smtp://user@smtp.gmail.com:587"
+set smtp_pass = ""

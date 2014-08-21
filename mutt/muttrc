@@ -1,0 +1,10 @@
+source "~/.mutt/account.tilman.holschuh@gmail.com"
+# source "~/.mutt/account.holschuh@unbunt.com"
+
+source "~/.mutt/mutt-colors-solarized-dark-16.muttrc"
+
+set sort = threads
+
+set header_cache = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/messages"
+
