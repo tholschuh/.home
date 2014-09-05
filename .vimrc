@@ -41,6 +41,8 @@ NeoBundle 'Lokaltog/powerline-fonts'
 NeoBundle 'bling/vim-bufferline'
 NeoBundle 'myusuf3/numbers.vim'
 NeoBundle 'roman/golden-ratio'
+NeoBundle 'xolox/vim-session'
+NeoBundle 'xolox/vim-misc'
 " colorschemes
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'trapd00r/neverland-vim-theme'
@@ -97,7 +99,7 @@ NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim'
 
 " Scala
-NeoBundle 'derekwyatt/vim-scala'
+" NeoBundle 'derekwyatt/vim-scala'
 
 """ Elixir
 NeoBundle 'elixir-lang/vim-elixir'
@@ -143,11 +145,10 @@ set encoding=utf-8 " necessary to show unicode glyphs
 set t_Co=256       " Explicitly tell vim that the terminal supports 256 colors
 
 
-autocmd FileType erlang setlocal expandtab tabstop=2 shiftwidth=2 textwidth=0
+autocmd FileType erlang setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
 autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2
       \ shiftwidth=2 smarttab shiftround nojoinspaces
 autocmd FileType vimshell setlocal textwidth=0
-
 
 """ map leader to space bar
 let mapleader = "\<Space>"
@@ -230,8 +231,8 @@ set runtimepath^='$HOME/.vim/bundle/vim-erlang-tags'
 " set tags^='$HOME/.vim/bundle/vim-erlang-tags'
 
 " vim-erlang-skeletons
-let g:erl_author="Tilman Holschuh <tholschuh@pugpharm.com>"
-let g:erl_company="Pug Pharm Productions, Inc."
+let g:erl_author="Tilman Holschuh <tilman@ubnt.com>"
+let g:erl_company="Ubiquiti Networks, Inc."
 let g:erl_replace_buffer=1
 
 " ------------------------------------------------------------------
@@ -343,3 +344,9 @@ command! -nargs=0 StartSBT call <SID>start_sbt()"])]"
 " markdown
 " ------------------------------------------------------------------
 let g:vim_markdown_folding_disabled=1
+
+" ------------------------------------------------------------------
+" sessions
+" ------------------------------------------------------------------
+let g:session_autosave = 'no'
+
