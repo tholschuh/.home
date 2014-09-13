@@ -27,12 +27,12 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-jdaddy'
 NeoBundle 'terryma/vim-expand-region'
 " NeoBundle 'tpope/sleuth'
+NeoBundle 'vim-scripts/DeleteTrailingWhitespace'
 
 """ VCS
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-git'
-" NeoBundle 'mhinz/vim-signify'
 " NeoBundle 'FriedSock/smeargle'
 
 """ UI
@@ -50,8 +50,9 @@ NeoBundle 'Pychimp/vim-luna'
 NeoBundle 'ciaranm/inkpot'
 
 """ Navigation
-NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jeetsukumaran/vim-filebeagle'
 NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'Shougo/unite.vim'
 
 """ Search
 NeoBundle 'kien/ctrlp.vim'
@@ -209,11 +210,27 @@ highlight Conditional ctermfg=3
 " highlight Operator ctermfg=darkmagenta
 highlight SignColumn ctermbg=cyan
 
+" ------------------------------------------------------------------
+" filebeagle config
+" ------------------------------------------------------------------
+let filebeagle_show_hidden=1
 
 " ------------------------------------------------------------------
-" NERDTree config
+" unite config
 " ------------------------------------------------------------------
-let NERDTreeShowHidden=1
+nnoremap <space>s :Unite -quick-match buffer<cr>
+
+if executable('ack')
+    let g:unite_source_grep_command = 'ack'
+endif
+if executable('ack-grep')
+    let g:unite_source_grep_command = 'ack'
+endif
+if executable('ack') || executable('ack-grep')
+    let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
+    let g:unite_source_grep_recursive_opt = ''
+endif
+nnoremap <space>/ :Unite grep:.<cr>
 
 " ------------------------------------------------------------------
 " EasyMotion Config
@@ -240,32 +257,12 @@ let g:erl_replace_buffer=1
 " ------------------------------------------------------------------
 nnoremap <F2> :NumbersToggle<CR>
 
-" ------------------------------------------------------------------
-" NERDTree Config
-" ------------------------------------------------------------------
-map <F3> :NERDTreeToggle<cr>
-let NERDTreeShowLineNumbers=1
-
-" ------------------------------------------------------------------
-" Signify Config
-" ------------------------------------------------------------------
-" map <F5> :SignifyToggle<cr>
-" let g:signify_disable_by_default = 1
-" let g:signify_sign_color_inherit_from_linenr = 1
-" "let g:signify_sign_weight = 'NONE'
-" highlight link SignifySignAdd    DiffAdd
-" highlight link SignifySignChange DiffChange
-" highlight link SignifySignDelete DiffDelete
-" highlight SignifySignAdd    cterm=bold ctermbg=14 ctermfg=5
-" highlight SignifySignDelete cterm=bold ctermbg=14 ctermfg=9
-" highlight SignifySignChange cterm=bold ctermbg=14 ctermfg=2
 
 " ------------------------------------------------------------------
 " gitgutter
 " ------------------------------------------------------------------
 map <F4> :GitGutterToggle<cr>
 highlight clear SignColumn
-
 
 " ------------------------------------------------------------------
 " ctrl-p
@@ -302,24 +299,8 @@ let g:vimshell_prompt =  '$ '
 " ------------------------------------------------------------------
 " whitespace
 " ------------------------------------------------------------------
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
-highlight MixedWhitespace ctermbg=red guibg=red
-match MixedWhitespace /^\t\+/
-
-function! TrimTrailingWhiteSpace()
-  %s/\s\+$//e
-endfunction
-
-" automatically trim trailing whitespace for certain file types
-autocmd FileType erlang,haskell,python,ruby,java,scala,vim,cpp,c,markdown
-  \ autocmd BufWritePre <buffer> :call TrimTrailingWhiteSpace()
-" ------------------------------------------------------------------
+let g:DeleteTrailingWhitespace = 1
+let g:DeleteTrailingWhitespace_Action = 'delete'
 
 " ------------------------------------------------------------------
 " scala
