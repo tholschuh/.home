@@ -1,0 +1,7 @@
+"3.8.2 (created: 2014/02/13 23:52:43)
+
+set gui=nonavigation
+
+source! /Users/tilman/.vimperatorrc.local
+
+" vim: set ft=vimperator:
