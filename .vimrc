@@ -28,6 +28,11 @@ NeoBundle 'tpope/vim-jdaddy'
 NeoBundle 'terryma/vim-expand-region'
 " NeoBundle 'tpope/sleuth'
 NeoBundle 'vim-scripts/DeleteTrailingWhitespace'
+NeoBundle 'thinca/vim-ref'
+
+NeoBundle 'ervandew/supertab'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'ypaq/vim-snippets'  " ultisnip snippets
 
 """ VCS
 NeoBundle 'tpope/vim-fugitive'
@@ -38,18 +43,21 @@ NeoBundle 'tpope/vim-git'
 """ UI
 NeoBundle 'bling/vim-airline'
 NeoBundle 'Lokaltog/powerline-fonts'
-NeoBundle 'bling/vim-bufferline'
+" NeoBundle 'bling/vim-bufferline'
 NeoBundle 'myusuf3/numbers.vim'
 NeoBundle 'roman/golden-ratio'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'xolox/vim-misc'
+NeoBundle 'moll/vim-bbye'
 " colorschemes
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'trapd00r/neverland-vim-theme'
 NeoBundle 'Pychimp/vim-luna'
 NeoBundle 'ciaranm/inkpot'
+NeoBundle 'w0ng/vim-hybrid'
 
 """ Navigation
+NeoBundle 'takac/vim-hardtime.git'
 NeoBundle 'jeetsukumaran/vim-filebeagle'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'Shougo/unite.vim'
@@ -84,7 +92,7 @@ NeoBundle 'vim-erlang/erlang-motions.vim.git'
 NeoBundle 'vim-erlang/vim-erlang-runtime.git'
 NeoBundle 'vim-erlang/vim-erlang-compiler.git'
 NeoBundle 'vim-erlang/vim-dialyzer.git'
-NeoBundle 'fishcakez/rebar_vim_plugin.git'
+" NeoBundle 'fishcakez/rebar_vim_plugin.git'
 NeoBundle 'vim-erlang/vim-rebar.git'
 NeoBundle 'vim-erlang/vim-erlang-skeletons.git'
 " NeoBundle 'vim-erlang/vim-erlang-omnicomplete.git'
@@ -145,24 +153,30 @@ set laststatus=2   " always show statusline
 set encoding=utf-8 " necessary to show unicode glyphs
 set t_Co=256       " Explicitly tell vim that the terminal supports 256 colors
 
+" save when leaving insert mode
+" http://blog.unixphilosopher.com/2015/02/a-more-betterer-autosave-in-vim.html
+autocmd InsertLeave,TextChanged * if expand('%') != '' | update | endif
 
 autocmd FileType erlang setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
 autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2
       \ shiftwidth=2 smarttab shiftround nojoinspaces
 autocmd FileType vimshell setlocal textwidth=0
 
-""" map leader to space bar
+""" map leader to space
 let mapleader = "\<Space>"
 
 """ some key mappings
-" save on space-w
-nnoremap <Leader>w :w<CR>
-" delete buffer on space-q
-nnoremap <Leader>q :bd<CR>
+" save on space-w, ctrl-w
+" nnoremap <Leader>w :w<CR>
+" delete buffer on space-q (bbye)
+nnoremap <Leader>q :Bdelete<CR>
 " vertical split on space-v
 nnoremap <Leader>v :vsplit<CR>
 " edit file on space-e
 nnoremap <Leader>e :e<SPACE>
+" switch buffers
+nmap <Leader>l :bnext<CR>
+nmap <Leader>k :bprevious<CR>
 
 " region expanding
 vmap v <Plug>(expand_region_expand)
@@ -171,15 +185,12 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " open tag under cursor in new tab
 map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<CR>
 
-" switch tabs
-nmap <tab> gt
-nmap <s-tab> gT
-
-" buffer resize
 map <c-h> 2<c-w><
 map <c-l> 2<c-w>>
 map <c-j> 2<c-w>+
 map <c-k> 2<c-w>-
+
+
 
 " ------------------------------------------------------------------
 " colorscheme config
@@ -191,6 +202,7 @@ colorscheme solarized
 "colorscheme inkpot
 "colorscheme neverland-darker
 "colorscheme luna
+" colorscheme hybrid
 
 " The following items are available options, but do not need to be
 " included in your .vimrc as they are currently set to their defaults.
@@ -207,7 +219,6 @@ colorscheme solarized
 
 highlight SpecialComment ctermfg=blue
 highlight Conditional ctermfg=3
-" highlight Operator ctermfg=darkmagenta
 highlight SignColumn ctermbg=cyan
 
 " ------------------------------------------------------------------
@@ -235,9 +246,18 @@ nnoremap <space>/ :Unite grep:.<cr>
 " ------------------------------------------------------------------
 " EasyMotion Config
 " ------------------------------------------------------------------
+map <Leader> <Plug>(easymotion-prefix)
+nmap s <Plug>(easymotion-s)
 " change EasyMotion shading to something more readable with Solarized
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
+
+" ------------------------------------------------------------------
+" hardtime config
+" ------------------------------------------------------------------
+let g:hardtime_default_on = 1
+let g:list_of_normal_keys = ["h", "j", "k", "l", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+let g:hardtime_allow_different_key = 1
 
 " ------------------------------------------------------------------
 " Erlang
@@ -245,6 +265,7 @@ hi link EasyMotionShade  Comment
 
 " vim-erlang-tags
 set runtimepath^='$HOME/.vim/bundle/vim-erlang-tags'
+nnoremap <space>] <c-]>
 " set tags^='$HOME/.vim/bundle/vim-erlang-tags'
 
 " vim-erlang-skeletons
@@ -253,10 +274,33 @@ let g:erl_company="Ubiquiti Networks, Inc."
 let g:erl_replace_buffer=1
 
 " ------------------------------------------------------------------
+" vim-ref
+" ------------------------------------------------------------------
+let g:ref_use_vimproc = 1
+let g:ref_open = 'split'
+let g:ref_cache_dir = expand('/tmp/vim_ref_cache/')
+nnoremap <leader>K :<C-u>Unite ref/erlang
+            \ -vertical -default-action=split<CR>
+
+" ------------------------------------------------------------------
 " numbers.vim
 " ------------------------------------------------------------------
 nnoremap <F2> :NumbersToggle<CR>
 
+
+" ------------------------------------------------------------------
+" ultisnips
+" ------------------------------------------------------------------
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " ------------------------------------------------------------------
 " gitgutter
