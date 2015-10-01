@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
-<root>
 
 <!--
-                    Keyboard 
+                    Keyboard
                     Apple Internal Keyboard / Trackpad ()
                     Vendor ID:0x05ac
                     Product ID:0x0291
@@ -33,166 +32,217 @@
                     Location ID:0x1000000
 -->
 
+<root>
 
-  <devicevendordef>
-    <vendorname>APPLE</vendorname>
-    <vendorid>0x05ac</vendorid>
-  </devicevendordef>
+    <devicevendordef>
+        <vendorname>APPLE</vendorname>
+        <vendorid>0x05ac</vendorid>
+    </devicevendordef>
 
-  <deviceproductdef>
-    <productname>LAPTOPKEYBOARD</productname>
-    <productid>0x0291</productid>
-  </deviceproductdef>
+    <deviceproductdef>
+        <productname>LAPTOPKEYBOARD</productname>
+        <productid>0x0291</productid>
+    </deviceproductdef>
 
-  <item>
-    <name>Disable built-in Laptop Keyboard</name>
-    <identifier>private.disable_laptop_keyboard</identifier>
-    <device_only>DeviceVendor::APPLE, DeviceProduct::LAPTOPKEYBOARD</device_only>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x00, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x01, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x02, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x03, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x04, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x05, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x06, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x07, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x08, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x09, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x0a, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x0b, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x0c, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x0d, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x0e, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x0f, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x10, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x11, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x12, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x13, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x14, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x15, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x16, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x17, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x18, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x19, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x1a, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x1b, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x1c, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x1d, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x1e, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x1f, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x20, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x21, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x22, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x23, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x24, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x25, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x26, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x27, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x28, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x29, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x2a, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x2b, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x2c, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x2d, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x2e, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x2f, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x30, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x31, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x32, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x33, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x34, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x35, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x36, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x37, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x38, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x39, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x3a, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x3b, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x3c, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x3d, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x3e, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x3f, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x40, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x41, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x42, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x43, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x44, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x45, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x46, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x47, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x48, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x49, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x4a, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x4b, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x4c, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x4d, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x4e, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x4f, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x50, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x51, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x52, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x53, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x54, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x55, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x56, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x57, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x58, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x59, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x5a, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x5b, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x5c, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x5d, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x5e, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x5f, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x60, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x61, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x62, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x63, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x64, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x65, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x66, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x67, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x68, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x69, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x6a, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x6b, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x6c, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x6d, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x6e, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x6f, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x70, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x71, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x72, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x73, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x74, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x75, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x76, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x77, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x78, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x79, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x7a, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x7b, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x7c, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x7d, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x7e, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x7f, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x80, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x81, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x82, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x83, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x84, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x85, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x86, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x87, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x88, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x89, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x8a, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x8b, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x8c, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x8d, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x8e, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x8f, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x90, KeyCode::VK_NONE</autogen>
-    <autogen>__KeyToKey__ KeyCode::RawValue::0x91, KeyCode::VK_NONE</autogen>
-  </item>
+    <item>
+        <name>Disable built-in Laptop Keyboard</name>
+        <identifier>private.disable_laptop_keyboard</identifier>
+        <device_only>DeviceVendor::APPLE, DeviceProduct::LAPTOPKEYBOARD</device_only>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x00, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x01, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x02, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x03, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x04, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x05, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x06, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x07, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x08, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x09, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x0a, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x0b, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x0c, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x0d, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x0e, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x0f, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x10, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x11, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x12, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x13, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x14, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x15, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x16, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x17, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x18, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x19, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x1a, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x1b, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x1c, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x1d, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x1e, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x1f, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x20, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x21, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x22, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x23, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x24, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x25, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x26, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x27, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x28, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x29, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x2a, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x2b, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x2c, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x2d, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x2e, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x2f, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x30, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x31, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x32, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x33, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x34, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x35, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x36, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x37, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x38, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x39, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x3a, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x3b, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x3c, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x3d, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x3e, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x3f, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x40, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x41, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x42, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x43, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x44, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x45, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x46, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x47, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x48, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x49, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x4a, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x4b, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x4c, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x4d, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x4e, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x4f, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x50, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x51, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x52, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x53, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x54, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x55, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x56, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x57, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x58, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x59, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x5a, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x5b, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x5c, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x5d, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x5e, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x5f, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x60, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x61, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x62, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x63, KeyCode::VK_NONE</autogen>
+        <!-- <autogen>__KeyToKey__ KeyCode::RawValue::0x64, KeyCode::VK_NONE</autogen> F8 -->
+        <!-- <autogen>__KeyToKey__ KeyCode::RawValue::0x65, KeyCode::VK_NONE</autogen> F9 -->
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x66, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x67, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x68, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x69, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x6a, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x6b, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x6c, KeyCode::VK_NONE</autogen>
+        <!-- <autogen>__KeyToKey__ KeyCode::RawValue::0x6d, KeyCode::VK_NONE</autogen>  F10 -->
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x6e, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x6f, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x70, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x71, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x72, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x73, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x74, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x75, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x76, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x77, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x78, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x79, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x7a, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x7b, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x7c, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x7d, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x7e, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x7f, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x80, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x81, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x82, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x83, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x84, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x85, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x86, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x87, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x88, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x89, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x8a, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x8b, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x8c, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x8d, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x8e, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x8f, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x90, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::RawValue::0x91, KeyCode::VK_NONE</autogen>
+    </item>
+
+
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_SHELL_switchprofile_default</name>
+        <url type="shell">
+            <![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Default    ]]>
+        </url>
+    </vkopenurldef>
+    <item>
+        <name>Switch Profile to Default with F9</name>
+        <identifier>private.switch_profile_default</identifier>
+        <autogen>
+            __KeyToKey__
+            KeyCode::F9,
+            KeyCode::VK_OPEN_URL_SHELL_switchprofile_default
+        </autogen>
+    </item>
+
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_SHELL_switchprofile_wat</name>
+        <url type="shell">
+            <![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name wat    ]]>
+        </url>
+    </vkopenurldef>
+    <item>
+        <name>Switch Profile to wat with F10</name>
+        <identifier>private.switch_profile_wat</identifier>
+        <autogen>
+            __KeyToKey__
+            KeyCode::F10,
+            KeyCode::VK_OPEN_URL_SHELL_switchprofile_wat
+        </autogen>
+    </item>
+
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_SHELL_switchprofile_atreus</name>
+        <url type="shell">
+            <![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name atreus    ]]>
+        </url>
+    </vkopenurldef>
+    <item>
+        <name>Switch Profile to Default with F8</name>
+        <identifier>private.switch_profile_atreus</identifier>
+        <autogen>
+            __KeyToKey__
+            KeyCode::F8,
+            KeyCode::VK_OPEN_URL_SHELL_switchprofile_atreus
+        </autogen>
+    </item>
+
 </root>

@@ -23,6 +23,8 @@ case $OSTYPE in
   ;;
 esac
 
+source $HOME/.home/git-completion.bash
+
 # bash autocomplete for SSH
 complete -W "$(echo $(grep '^ssh ' $HOME/.bash_history | sort -u | sed 's/^ssh //'))" ssh
 
@@ -30,3 +32,13 @@ complete -W "$(echo $(grep '^ssh ' $HOME/.bash_history | sort -u | sed 's/^ssh /
 #see http://caliban.org/bash/
 set -o vi
 
+
+# added by travis gem
+[ -f /Users/tilman/.travis/travis.sh ] && source /Users/tilman/.travis/travis.sh
+
+# set path for go
+mkdir -p $HOME/dev/go
+export GOPATH=$HOME/dev/go
+
+# enable erlang
+source $HOME/opt/erlang-17.5/activate

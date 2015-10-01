@@ -31,8 +31,8 @@ NeoBundle 'vim-scripts/DeleteTrailingWhitespace'
 NeoBundle 'thinca/vim-ref'
 
 NeoBundle 'ervandew/supertab'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'ypaq/vim-snippets'  " ultisnip snippets
+" NeoBundle 'SirVer/ultisnips'
+" NeoBundle 'ypaq/vim-snippets'  " ultisnip snippets
 
 """ VCS
 NeoBundle 'tpope/vim-fugitive'
@@ -106,6 +106,9 @@ NeoBundle 'vim-erlang/vim-erlang-tags.git'
 NeoBundle 'dag/vim2hs.git'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim'
+
+" Rust
+NeoBundle 'rust-lang/rust.vim'
 
 " Scala
 " NeoBundle 'derekwyatt/vim-scala'
@@ -293,14 +296,14 @@ nnoremap <F2> :NumbersToggle<CR>
 " ------------------------------------------------------------------
 
 " make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" " better key bindings for UltiSnipsExpandTrigger
+" let g:UltiSnipsExpandTrigger = "<tab>"
+" let g:UltiSnipsJumpForwardTrigger = "<tab>"
+" let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " ------------------------------------------------------------------
 " gitgutter
