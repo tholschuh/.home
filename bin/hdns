@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+hdns() {
+    domain="$1"
+    curl "http://dns-scanner.herokuapp.com/?d=$domain"
+}

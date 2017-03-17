@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+ag $1 --ignore-dir vendor
