@@ -2,137 +2,84 @@
 "
 " ------------------------------------------------------------------
 
-set nocompatible               " be iMproved
-filetype off                   " required!
-
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#rc('~/.vim/bundle/')
-
-NeoBundleFetch 'Shougo/neobundle.vim'
-
 " ------------------------------------------------------------------
-" Bundles Config
-" ------------------------------------------------------------------
+" Plug initialization
+call plug#begin('~/.vim/plugged')
 
 """ Editing
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-repeat'
-"NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'tpope/vim-jdaddy'
-NeoBundle 'terryma/vim-expand-region'
-" NeoBundle 'tpope/sleuth'
-NeoBundle 'vim-scripts/DeleteTrailingWhitespace'
-NeoBundle 'thinca/vim-ref'
-
-NeoBundle 'ervandew/supertab'
-" NeoBundle 'SirVer/ultisnips'
-" NeoBundle 'ypaq/vim-snippets'  " ultisnip snippets
+Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-jdaddy'
+Plug 'terryma/vim-expand-region'
+Plug 'vim-scripts/DeleteTrailingWhitespace'
 
 """ VCS
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tpope/vim-git'
-" NeoBundle 'FriedSock/smeargle'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-git'
 
 """ UI
-NeoBundle 'bling/vim-airline'
-NeoBundle 'Lokaltog/powerline-fonts'
-" NeoBundle 'bling/vim-bufferline'
-NeoBundle 'myusuf3/numbers.vim'
-NeoBundle 'roman/golden-ratio'
-NeoBundle 'xolox/vim-session'
-NeoBundle 'xolox/vim-misc'
-NeoBundle 'moll/vim-bbye'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Lokaltog/powerline-fonts'
+Plug 'myusuf3/numbers.vim'
+Plug 'roman/golden-ratio'
+Plug 'moll/vim-bbye'
 " colorschemes
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'trapd00r/neverland-vim-theme'
-NeoBundle 'Pychimp/vim-luna'
-NeoBundle 'ciaranm/inkpot'
-NeoBundle 'w0ng/vim-hybrid'
+Plug 'altercation/vim-colors-solarized'
+Plug 'trapd00r/neverland-vim-theme'
+Plug 'Pychimp/vim-luna'
+Plug 'ciaranm/inkpot'
+Plug 'w0ng/vim-hybrid'
 
 """ Navigation
-NeoBundle 'takac/vim-hardtime.git'
-NeoBundle 'jeetsukumaran/vim-filebeagle'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'Shougo/unite.vim'
+Plug 'takac/vim-hardtime'
+Plug 'jeetsukumaran/vim-filebeagle'
+Plug 'Lokaltog/vim-easymotion'
 
 """ Search
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'mileszs/ack.vim'
-" NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'Valloric/YouCompleteMe', {
-      \ 'build' : {
-      \     'windows' : './install.sh',
-      \     'cygwin' : './install.sh',
-      \     'mac' : './install.sh',
-      \     'unix' : './install.sh',
-      \    },
-      \ }
-
-""" Shell
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-NeoBundle 'Shougo/vimshell'
+Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 """ Erlang
-NeoBundle 'tpope/vim-dispatch.git'     "  required by other vim-erlang plugins
-NeoBundle 'vim-erlang/erlang-motions.vim.git'
-NeoBundle 'vim-erlang/vim-erlang-runtime.git'
-NeoBundle 'vim-erlang/vim-erlang-compiler.git'
-NeoBundle 'vim-erlang/vim-dialyzer.git'
-" NeoBundle 'fishcakez/rebar_vim_plugin.git'
-NeoBundle 'vim-erlang/vim-rebar.git'
-NeoBundle 'vim-erlang/vim-erlang-skeletons.git'
-" NeoBundle 'vim-erlang/vim-erlang-omnicomplete.git'
-NeoBundle 'vim-erlang/vim-erlang-tags.git'
+Plug 'tpope/vim-dispatch'     "  required by other vim-erlang plugins
+Plug 'vim-erlang/erlang-motions.vim'
+Plug 'vim-erlang/vim-erlang-runtime'
+Plug 'vim-erlang/vim-erlang-compiler'
+Plug 'vim-erlang/vim-dialyzer'
+Plug 'vim-erlang/vim-erlang-skeletons'
+Plug 'vim-erlang/vim-erlang-tags'
 
-" NeoBundle 'hcs42/vim-erlang-runtime'
-" NeoBundle 'jimenezrick/vimerl'
-" NeoBundle 'mbbx6spp/vim-rebar'
+""" Go
+Plug 'fatih/vim-go'
 
 """ Haskell
-NeoBundle 'dag/vim2hs.git'
-NeoBundle 'ujihisa/neco-ghc'
-NeoBundle 'eagletmt/ghcmod-vim'
+Plug 'dag/vim2hs'
+Plug 'ujihisa/neco-ghc'
+Plug 'eagletmt/ghcmod-vim'
+
+" Pony
+Plug 'dleonard0/pony-vim-syntax'
 
 " Rust
-NeoBundle 'rust-lang/rust.vim'
-
-" Scala
-" NeoBundle 'derekwyatt/vim-scala'
+Plug 'rust-lang/rust.vim'
 
 """ Elixir
-NeoBundle 'elixir-lang/vim-elixir'
+Plug 'elixir-lang/vim-elixir'
 
 """ Markdown
-NeoBundle 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 
-" NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-" vim-scripts repos
-NeoBundle 'taglist.vim'
-" NeoBundle 'L9'
-" NeoBundle 'FuzzyFinder'
-" NeoBundle 'rails.vim'
-" non github repos
-" NeoBundle 'git://git.wincent.com/command-t.git'
-" ...
+call plug#end()
 
-filetype plugin indent on     " required!
+filetype plugin indent on
 
-" Installation check.
-NeoBundleCheck
+" ------------------------------------------------------------------
 
 " ------------------------------------------------------------------
 " Config
@@ -156,6 +103,8 @@ set laststatus=2   " always show statusline
 set encoding=utf-8 " necessary to show unicode glyphs
 set t_Co=256       " Explicitly tell vim that the terminal supports 256 colors
 
+set completeopt-=preview " disable the stupid preview window
+
 " save when leaving insert mode
 " http://blog.unixphilosopher.com/2015/02/a-more-betterer-autosave-in-vim.html
 autocmd InsertLeave,TextChanged * if expand('%') != '' | update | endif
@@ -164,13 +113,16 @@ autocmd FileType erlang setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
 autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2
       \ shiftwidth=2 smarttab shiftround nojoinspaces
 autocmd FileType vimshell setlocal textwidth=0
+autocmd FileType yaml set shiftwidth=2 softtabstop=2
+autocmd FileType pony set shiftwidth=2 softtabstop=2
+autocmd FileType ruby set shiftwidth=2 softtabstop=2
 
 """ map leader to space
 let mapleader = "\<Space>"
 
-""" some key mappings
-" save on space-w, ctrl-w
-" nnoremap <Leader>w :w<CR>
+" ------------------------------------------------------------------
+" key mappings
+" ------------------------------------------------------------------
 " delete buffer on space-q (bbye)
 nnoremap <Leader>q :Bdelete<CR>
 " vertical split on space-v
@@ -181,6 +133,13 @@ nnoremap <Leader>e :e<SPACE>
 nmap <Leader>l :bnext<CR>
 nmap <Leader>k :bprevious<CR>
 
+" indent whole buffer
+nnoremap g= gg=Gg``
+
+" ctrl-p like remap to fzf
+map <C-p> :Files<CR>
+map <C-b> :Buffers<CR>
+
 " region expanding
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -188,18 +147,18 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " open tag under cursor in new tab
 map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<CR>
 
+" resizing windows
 map <c-h> 2<c-w><
 map <c-l> 2<c-w>>
 map <c-j> 2<c-w>+
 map <c-k> 2<c-w>-
-
-
 
 " ------------------------------------------------------------------
 " colorscheme config
 " ------------------------------------------------------------------
 syntax enable
 set background=dark
+" set background=light
 
 colorscheme solarized
 "colorscheme inkpot
@@ -215,10 +174,9 @@ colorscheme solarized
 " let g:solarized_bold=1
 " let g:solarized_underline=1
 " let g:solarized_italic=1
-" let g:solarized_termcolors=256
+let g:solarized_termcolors=256
 " let g:solarized_visibility="normal"
 " let g:solarized_menu=1
-
 
 highlight SpecialComment ctermfg=blue
 highlight Conditional ctermfg=3
@@ -272,53 +230,26 @@ nnoremap <space>] <c-]>
 " set tags^='$HOME/.vim/bundle/vim-erlang-tags'
 
 " vim-erlang-skeletons
-let g:erl_author="Tilman Holschuh <tilman@ubnt.com>"
-let g:erl_company="Ubiquiti Networks, Inc."
+let g:erl_author="Tilman Holschuh <tilman@heroku.com>"
+let g:erl_company="Heroku, Inc."
 let g:erl_replace_buffer=1
+let g:hardtime_maxcount = 2
 
 " ------------------------------------------------------------------
-" vim-ref
+" Go
 " ------------------------------------------------------------------
-let g:ref_use_vimproc = 1
-let g:ref_open = 'split'
-let g:ref_cache_dir = expand('/tmp/vim_ref_cache/')
-nnoremap <leader>K :<C-u>Unite ref/erlang
-            \ -vertical -default-action=split<CR>
+let g:go_metalinter_autosave = 1
 
 " ------------------------------------------------------------------
 " numbers.vim
 " ------------------------------------------------------------------
 nnoremap <F2> :NumbersToggle<CR>
 
-
-" ------------------------------------------------------------------
-" ultisnips
-" ------------------------------------------------------------------
-
-" make YCM compatible with UltiSnips (using supertab)
-" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-" let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" " better key bindings for UltiSnipsExpandTrigger
-" let g:UltiSnipsExpandTrigger = "<tab>"
-" let g:UltiSnipsJumpForwardTrigger = "<tab>"
-" let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
 " ------------------------------------------------------------------
 " gitgutter
 " ------------------------------------------------------------------
 map <F4> :GitGutterToggle<cr>
 highlight clear SignColumn
-
-" ------------------------------------------------------------------
-" ctrl-p
-" ------------------------------------------------------------------
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|deps$\|\.eunit$\|tmp$',
-  \ 'file': '\.beam$\|\.so$\|\.dll$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
 
 " ------------------------------------------------------------------
 " airline
@@ -338,43 +269,12 @@ let g:surround_{char2nr('\\')} = "\\"
 let g:bufferline_echo = 0
 
 " ------------------------------------------------------------------
-" vimshell
-" ------------------------------------------------------------------
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt =  '$ '
-
-" ------------------------------------------------------------------
 " whitespace
 " ------------------------------------------------------------------
 let g:DeleteTrailingWhitespace = 1
-let g:DeleteTrailingWhitespace_Action = 'delete'
-
-" ------------------------------------------------------------------
-" scala
-" ------------------------------------------------------------------
-
-function! s:start_sbt()
-  if !has_key(t:, 'sbt_cmds')
-    "let t:sbt_cmds = [input('t:sbt_cmds[0] = ')]
-    let t:sbt_cmds = ['compile']
-    echo "let t:sbt_cmd = 'compile'"
-  endif
-  execute 'VimShellInteractive sbt'
-  stopinsert
-  let t:sbt_bufname = bufname('%')
-  wincmd H
-  wincmd p
-endfunction
-
-command! -nargs=0 StartSBT call <SID>start_sbt()"])]"
+let g:DeleteTrailingWhitespace_Action = 'ask'
 
 " ------------------------------------------------------------------
 " markdown
 " ------------------------------------------------------------------
 let g:vim_markdown_folding_disabled=1
-
-" ------------------------------------------------------------------
-" sessions
-" ------------------------------------------------------------------
-let g:session_autosave = 'no'
-

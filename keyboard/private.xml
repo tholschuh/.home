@@ -204,28 +204,28 @@
         </url>
     </vkopenurldef>
     <item>
-        <name>Switch Profile to Default with F9</name>
+        <name>Switch Profile to Default with F5</name>
         <identifier>private.switch_profile_default</identifier>
         <autogen>
             __KeyToKey__
-            KeyCode::F9,
+            KeyCode::F5,
             KeyCode::VK_OPEN_URL_SHELL_switchprofile_default
         </autogen>
     </item>
 
     <vkopenurldef>
-        <name>KeyCode::VK_OPEN_URL_SHELL_switchprofile_wat</name>
+        <name>KeyCode::VK_OPEN_URL_SHELL_switchprofile_ducky</name>
         <url type="shell">
-            <![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name wat    ]]>
+            <![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Ducky    ]]>
         </url>
     </vkopenurldef>
     <item>
-        <name>Switch Profile to wat with F10</name>
-        <identifier>private.switch_profile_wat</identifier>
+        <name>Switch Profile to Ducky with F6</name>
+        <identifier>private.switch_profile_ducky</identifier>
         <autogen>
             __KeyToKey__
-            KeyCode::F10,
-            KeyCode::VK_OPEN_URL_SHELL_switchprofile_wat
+            KeyCode::F6,
+            KeyCode::VK_OPEN_URL_SHELL_switchprofile_ducky
         </autogen>
     </item>
 

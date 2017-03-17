@@ -1,13 +1,10 @@
 .PHONY: vim
 
-VIM_BUNDLE = ~/.vim/bundle
-NEOBUNDLE_VIM = $(VIM_BUNDLE)/neobundle.vim
+plug_vim:
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-$(NEOBUNDLE_VIM):
-	mkdir -p ~/.vim/bundle
-	git clone https://github.com/Shougo/neobundle.vim $(NEOBUNDLE_VIM)
-
-vim: $(NEOBUNDLE_VIM)
+vim: plug_vim
 	ln -si $(CURDIR)/.vimrc ~/.vimrc
 
 links :

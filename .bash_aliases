@@ -26,4 +26,6 @@ alias t='tree'
 alias jbos='jobs'
 alias rkae='rake'
 alias emacs='emacs -nw'
-
+alias h='heroku'
+alias hs='heroku sudo'
+alias ic='ion-client'
