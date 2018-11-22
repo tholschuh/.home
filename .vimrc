@@ -8,13 +8,14 @@ call plug#begin('~/.vim/plugged')
 
 """ Editing
 Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
+Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-commentary'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'godlygeek/tabular'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-jdaddy'
-Plug 'terryma/vim-expand-region'
-Plug 'vim-scripts/DeleteTrailingWhitespace'
+Plug 'tpope/vim-eunuch' "Vim sugar for the UNIX shell commands that need it the most.
 
 """ VCS
 Plug 'tpope/vim-fugitive'
@@ -22,46 +23,35 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-git'
 
 """ UI
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'Lokaltog/powerline-fonts'
+Plug 'itchyny/lightline.vim'
 Plug 'myusuf3/numbers.vim'
 Plug 'roman/golden-ratio'
 Plug 'moll/vim-bbye'
-" colorschemes
-Plug 'altercation/vim-colors-solarized'
-Plug 'trapd00r/neverland-vim-theme'
-Plug 'Pychimp/vim-luna'
-Plug 'ciaranm/inkpot'
-Plug 'w0ng/vim-hybrid'
 
 """ Navigation
 Plug 'takac/vim-hardtime'
 Plug 'jeetsukumaran/vim-filebeagle'
-Plug 'Lokaltog/vim-easymotion'
+Plug 'justinmk/vim-sneak'
 
 """ Search
 Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 """ Erlang
 Plug 'tpope/vim-dispatch'     "  required by other vim-erlang plugins
-Plug 'vim-erlang/erlang-motions.vim'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'vim-erlang/vim-erlang-compiler'
-Plug 'vim-erlang/vim-dialyzer'
-Plug 'vim-erlang/vim-erlang-skeletons'
-Plug 'vim-erlang/vim-erlang-tags'
 
 """ Go
 Plug 'fatih/vim-go'
 
 """ Haskell
 Plug 'dag/vim2hs'
-Plug 'ujihisa/neco-ghc'
 Plug 'eagletmt/ghcmod-vim'
+
+""" Idris
+Plug 'idris-hackers/idris-vim'
 
 " Pony
 Plug 'dleonard0/pony-vim-syntax'
@@ -69,11 +59,8 @@ Plug 'dleonard0/pony-vim-syntax'
 " Rust
 Plug 'rust-lang/rust.vim'
 
-""" Elixir
-Plug 'elixir-lang/vim-elixir'
-
-""" Markdown
-Plug 'plasticboy/vim-markdown'
+""" Terraform
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
@@ -109,7 +96,6 @@ set completeopt-=preview " disable the stupid preview window
 " http://blog.unixphilosopher.com/2015/02/a-more-betterer-autosave-in-vim.html
 autocmd InsertLeave,TextChanged * if expand('%') != '' | update | endif
 
-autocmd FileType erlang setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
 autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2
       \ shiftwidth=2 smarttab shiftround nojoinspaces
 autocmd FileType vimshell setlocal textwidth=0
@@ -127,10 +113,6 @@ let mapleader = "\<Space>"
 nnoremap <Leader>q :Bdelete<CR>
 " vertical split on space-v
 nnoremap <Leader>v :vsplit<CR>
-" edit file on space-e
-nnoremap <Leader>e :e<SPACE>
-" switch buffers
-nmap <Leader>l :bnext<CR>
 nmap <Leader>k :bprevious<CR>
 
 " indent whole buffer
@@ -154,33 +136,53 @@ map <c-j> 2<c-w>+
 map <c-k> 2<c-w>-
 
 " ------------------------------------------------------------------
-" colorscheme config
+" NeoVim
+" ------------------------------------------------------------------
+set inccommand=split
+
+" ------------------------------------------------------------------
+" color config
 " ------------------------------------------------------------------
 syntax enable
-set background=dark
-" set background=light
 
-colorscheme solarized
-"colorscheme inkpot
-"colorscheme neverland-darker
-"colorscheme luna
-" colorscheme hybrid
+" UI
+highlight VertSplit ctermbg=grey ctermfg=grey
+highlight ColorColumn ctermbg=236
+highlight IncSearch ctermbg=yellow ctermfg=black
+highlight Search ctermbg=lightgreen ctermfg=black
 
-" The following items are available options, but do not need to be
-" included in your .vimrc as they are currently set to their defaults.
+" standard syntax
+highlight Comment ctermfg=grey
+highlight String ctermfg=lightblue
+highlight Constant ctermfg=blue
+highlight Statement ctermfg=yellow
+" highlight Function ctermfg=white
+" highlight Character
+" highlight Identifier
+" highlight Operator
+" highlight PreProc
+" highlight Include
+" highlight Define
+" highlight Macro
+" highlight Type
+" highlight Structure
+" highlight Special
+" highlight Underlined
+" highlight Error
+" highlight Todo
+" highlight SpecialComment ctermfg=blue
+" highlight Conditional ctermfg=3
+" highlight SignColumn ctermbg=cyan
 
-" let g:solarized_termtrans=1
-" let g:solarized_degrade=0
-" let g:solarized_bold=1
-" let g:solarized_underline=1
-" let g:solarized_italic=1
-let g:solarized_termcolors=256
-" let g:solarized_visibility="normal"
-" let g:solarized_menu=1
+" line numbers
+highlight CursorLineNr ctermbg=none ctermfg=lightgrey
+highlight LineNr ctermbg=none ctermfg=darkgrey
 
-highlight SpecialComment ctermfg=blue
-highlight Conditional ctermfg=3
-highlight SignColumn ctermbg=cyan
+
+" ------------------------------------------------------------------
+" golden-ratio
+" ------------------------------------------------------------------
+let g:golden_ratio_exclude_nonmodifiable=1
 
 " ------------------------------------------------------------------
 " filebeagle config
@@ -188,56 +190,34 @@ highlight SignColumn ctermbg=cyan
 let filebeagle_show_hidden=1
 
 " ------------------------------------------------------------------
-" unite config
-" ------------------------------------------------------------------
-nnoremap <space>s :Unite -quick-match buffer<cr>
-
-if executable('ack')
-    let g:unite_source_grep_command = 'ack'
-endif
-if executable('ack-grep')
-    let g:unite_source_grep_command = 'ack'
-endif
-if executable('ack') || executable('ack-grep')
-    let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
-    let g:unite_source_grep_recursive_opt = ''
-endif
-nnoremap <space>/ :Unite grep:.<cr>
-
-" ------------------------------------------------------------------
-" EasyMotion Config
-" ------------------------------------------------------------------
-map <Leader> <Plug>(easymotion-prefix)
-nmap s <Plug>(easymotion-s)
-" change EasyMotion shading to something more readable with Solarized
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade  Comment
-
-" ------------------------------------------------------------------
 " hardtime config
 " ------------------------------------------------------------------
 let g:hardtime_default_on = 1
 let g:list_of_normal_keys = ["h", "j", "k", "l", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 let g:hardtime_allow_different_key = 1
+let g:hardtime_maxcount = 2
 
 " ------------------------------------------------------------------
 " Erlang
 " ------------------------------------------------------------------
-
+autocmd FileType erlang setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
 " vim-erlang-tags
-set runtimepath^='$HOME/.vim/bundle/vim-erlang-tags'
-nnoremap <space>] <c-]>
+" set runtimepath^='$HOME/.vim/bundle/vim-erlang-tags'
+" nnoremap <space>] <c-]>
 " set tags^='$HOME/.vim/bundle/vim-erlang-tags'
 
 " vim-erlang-skeletons
 let g:erl_author="Tilman Holschuh <tilman@heroku.com>"
 let g:erl_company="Heroku, Inc."
 let g:erl_replace_buffer=1
-let g:hardtime_maxcount = 2
 
 " ------------------------------------------------------------------
 " Go
 " ------------------------------------------------------------------
+autocmd FileType go setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
+
+" Change go defaults; save will do :GoImports
+let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 
 " ------------------------------------------------------------------
@@ -246,35 +226,37 @@ let g:go_metalinter_autosave = 1
 nnoremap <F2> :NumbersToggle<CR>
 
 " ------------------------------------------------------------------
+" whitespace
+" ------------------------------------------------------------------
+map <F3> :StripWhitespace<CR>
+
+" ------------------------------------------------------------------
 " gitgutter
 " ------------------------------------------------------------------
 map <F4> :GitGutterToggle<cr>
-highlight clear SignColumn
 
 " ------------------------------------------------------------------
-" airline
+" lightline
 " ------------------------------------------------------------------
-let g:airline_theme='solarized'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
 " ------------------------------------------------------------------
 " vim-surround
 " ------------------------------------------------------------------
 let g:surround_{char2nr('\\')} = "\\"
 
-" ------------------------------------------------------------------
-" bufferline
-" ------------------------------------------------------------------
-let g:bufferline_echo = 0
 
 " ------------------------------------------------------------------
-" whitespace
+" terraform
 " ------------------------------------------------------------------
-let g:DeleteTrailingWhitespace = 1
-let g:DeleteTrailingWhitespace_Action = 'ask'
-
-" ------------------------------------------------------------------
-" markdown
-" ------------------------------------------------------------------
-let g:vim_markdown_folding_disabled=1
+let g:terraform_align=1
+autocmd FileType terraform setlocal commentstring=#%s
+autocmd FileType terraform set shiftwidth=2 softtabstop=2
