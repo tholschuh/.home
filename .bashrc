@@ -14,7 +14,7 @@ esac
 case $OSTYPE in
 
   darwin*)
-  export EDITOR=/usr/local/Cellar/vim/7.4.1190/bin/vim
+  export EDITOR=nvim
   ;;
 
   linux-gnu)
@@ -24,8 +24,8 @@ case $OSTYPE in
 esac
 
 # bash completions
-source $HOME/.home/bash_completion/git-completion.bash
-source $HOME/.home/bash_completion/kerl
+source /usr/local/Cellar/git/2.22.0_1/etc/bash_completion.d/git-completion.bash 
+# source /usr/local/etc/bash_completion.d
 
 # bash autocomplete for SSH
 complete -W "$(echo $(grep '^ssh ' $HOME/.bash_history | sort -u | sed 's/^ssh //'))" ssh
@@ -35,12 +35,11 @@ complete -W "$(echo $(grep '^ssh ' $HOME/.bash_history | sort -u | sed 's/^ssh /
 set -o vi
 
 
-
 # set path for go
-mkdir -p $HOME/dev/go
-export GOPATH=$HOME/dev/go
-export GP=$GOPATH
-export PATH="$PATH:$GOPATH/bin"
+if hash go 2>/dev/null ; then
+    export GOPATH=$HOME
+    export PATH="$PATH:$GOPATH/bin"
+fi
 
 
 if [ -e $HOME/bin ]
@@ -48,11 +47,17 @@ then
     export PATH="$PATH:$HOME/bin"
 fi
 
-# erlang
-source $HOME/opt/erlang/19.1/activate
-ERL_LIBS="~/src/erlang/cuter:$ERL_LIBS"
+if [ -e /usr/local/kubebuilder ]
+then
+    export PATH="$PATH:/usr/local/kubebuilder/bin"
+fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# fzf
+if [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+    bind -x '"\C-f": fd'
+    bind -x '"\C-p": nv $(fzf)'
+fi
 
 # rbenv
 eval "$(rbenv init -)"
@@ -62,7 +67,9 @@ function cloud() {
     eval "$(ion-client shell)"
     cloud "$@"
 }
-cloud $USER 2&>1 /dev/null
+cloud staging > /dev/null 2>&1
+
+# "$(heroku autocomplete:script bash)"
 
 # added by travis gem
 [ -f /Users/tholschuh/.travis/travis.sh ] && source /Users/tholschuh/.travis/travis.sh

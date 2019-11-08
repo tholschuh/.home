@@ -100,6 +100,14 @@ case $HEROKU_CLOUD in
 esac
 }
 
+# is heroku sudo
+function IS_H_SUDO {
+local prefix=$(echo -e '\xE2\x94\x80')
+if [ $HEROKU_SUDO ]; then
+    echo "$prefix["$(RED h:sudo)"]"
+fi
+}
+
 # time
 function WHAT_TIME {
 local prefix=$(echo -e '\xE2\x94\x80')
@@ -125,5 +133,5 @@ fi
 }
 
 
-PROMPT_COMMAND='PS1="$(begin_top_line)$(WHAT_TIME)$(WHICH_CLOUD)$(WHICH_PATH)$(GIT_BRANCH)\n$(prompt_symbol) "'
+PROMPT_COMMAND='PS1="$(begin_top_line)$(WHAT_TIME)$(WHICH_CLOUD)$(IS_H_SUDO)$(WHICH_PATH)$(GIT_BRANCH)\n$(prompt_symbol) "'
 

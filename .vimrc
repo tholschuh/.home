@@ -36,7 +36,8 @@ Plug 'justinmk/vim-sneak'
 """ Search
 Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 
 """ Erlang
 Plug 'tpope/vim-dispatch'     "  required by other vim-erlang plugins
@@ -44,7 +45,7 @@ Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'vim-erlang/vim-erlang-compiler'
 
 """ Go
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 """ Haskell
 Plug 'dag/vim2hs'
@@ -61,6 +62,9 @@ Plug 'rust-lang/rust.vim'
 
 """ Terraform
 Plug 'hashivim/vim-terraform'
+
+""" GrpahViz
+Plug 'liuchengxu/graphviz.vim'
 
 call plug#end()
 
@@ -97,7 +101,7 @@ set completeopt-=preview " disable the stupid preview window
 autocmd InsertLeave,TextChanged * if expand('%') != '' | update | endif
 
 autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=2
-      \ shiftwidth=2 smarttab shiftround nojoinspaces
+            \ shiftwidth=2 smarttab shiftround nojoinspaces
 autocmd FileType vimshell setlocal textwidth=0
 autocmd FileType yaml set shiftwidth=2 softtabstop=2
 autocmd FileType pony set shiftwidth=2 softtabstop=2
@@ -201,15 +205,6 @@ let g:hardtime_maxcount = 2
 " Erlang
 " ------------------------------------------------------------------
 autocmd FileType erlang setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
-" vim-erlang-tags
-" set runtimepath^='$HOME/.vim/bundle/vim-erlang-tags'
-" nnoremap <space>] <c-]>
-" set tags^='$HOME/.vim/bundle/vim-erlang-tags'
-
-" vim-erlang-skeletons
-let g:erl_author="Tilman Holschuh <tilman@heroku.com>"
-let g:erl_company="Heroku, Inc."
-let g:erl_replace_buffer=1
 
 " ------------------------------------------------------------------
 " Go
@@ -217,6 +212,8 @@ let g:erl_replace_buffer=1
 autocmd FileType go setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
 
 " Change go defaults; save will do :GoImports
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 
@@ -239,14 +236,14 @@ map <F4> :GitGutterToggle<cr>
 " lightline
 " ------------------------------------------------------------------
 let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'fugitive#head'
+            \ },
+            \ }
 
 " ------------------------------------------------------------------
 " vim-surround
@@ -260,3 +257,26 @@ let g:surround_{char2nr('\\')} = "\\"
 let g:terraform_align=1
 autocmd FileType terraform setlocal commentstring=#%s
 autocmd FileType terraform set shiftwidth=2 softtabstop=2
+
+" ------------------------------------------------------------------
+" coc
+" ------------------------------------------------------------------
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" ------------------------------------------------------------------
+" graphviz
+" ------------------------------------------------------------------
+let g:graphviz_viewer = 'open'
+let g:graphviz_output_format = 'png'

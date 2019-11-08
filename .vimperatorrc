@@ -2,7 +2,7 @@
 
 set gui=nonavigation
 
-source! /Users/tilman/.vimperatorrc.local
+" source! /Users/tilman/.vimperatorrc.local
 
 " vim: set ft=vimperator:
 
