@@ -1,5 +1,15 @@
-## shell prompt
-source $HOME/.home/prompt_command.sh
+
+
+## history
+# Set no limit for history file size
+HISTFILESIZE=-1
+# # Do not store a duplicate of the last entered command
+HISTCONTROL=ignoredups
+# Configure BASH to append (rather than overwrite the history):
+shopt -s histappend
+# Attempt to save all lines of a multiple-line command in the same entry
+shopt -s cmdhist
+
 
 ## aliases
 case $OSTYPE in
@@ -24,16 +34,17 @@ case $OSTYPE in
 esac
 
 # bash completions
-source /usr/local/Cellar/git/2.22.0_1/etc/bash_completion.d/git-completion.bash 
-# source /usr/local/etc/bash_completion.d
-
-# bash autocomplete for SSH
-complete -W "$(echo $(grep '^ssh ' $HOME/.bash_history | sort -u | sed 's/^ssh //'))" ssh
-
+BASH_COMPLETION=/usr/local/etc/bash_completion.d
+if [ -d "$BASH_COMPLETION" ];
+then
+    source "$BASH_COMPLETION/bash"
+    source "$BASH_COMPLETION/git-completion.bash"
+fi
+export CDPATH="$CDPATH:~/src/github.com/heroku:~/src:~:"
+complete -d cd
 
 #see http://caliban.org/bash/
 set -o vi
-
 
 # set path for go
 if hash go 2>/dev/null ; then
@@ -41,6 +52,10 @@ if hash go 2>/dev/null ; then
     export PATH="$PATH:$GOPATH/bin"
 fi
 
+if [ -e $HOME/.cargo/bin ]
+then
+    export PATH="$PATH:$HOME/.cargo/bin"
+fi
 
 if [ -e $HOME/bin ]
 then
@@ -67,9 +82,16 @@ function cloud() {
     eval "$(ion-client shell)"
     cloud "$@"
 }
-cloud staging > /dev/null 2>&1
+
+if hash ion-client 2>/dev/null ; then
+    cloud staging > /dev/null 2>&1
+fi
 
 # "$(heroku autocomplete:script bash)"
+# complete -F _heroku h
 
-# added by travis gem
-[ -f /Users/tholschuh/.travis/travis.sh ] && source /Users/tholschuh/.travis/travis.sh
+## shell prompt
+# After each command, append to the history file and reread it
+export PROMPT_COMMAND="history -a; history -c; history -r; source $HOME/.home/prompt_command.sh"
+# PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$"\n"}history -a; history -c; history -r; "
+

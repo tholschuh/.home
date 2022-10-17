@@ -71,67 +71,62 @@ function WHITE       { echo "\[\e[0;97m\]$1\[\e[0m\]"; }
 # function W_ON_GRAY        { echo "\[\e[0;97;47m\]$1\[\e[0m\]"; }
 # function W_ON_LIGHT_GRAY  { echo "\[\e[0;97;107m\]$1\[\e[0m\]"; }
 
+prefix=$(echo -e '\xE2\x94\x80')
+
 # git
 function GIT_BRANCH {
 if git branch &>/dev/null; then
      BRANCH=$(git branch 2>/dev/null | grep \* |  cut -d " " -f 2)
-     local prefix=$(echo -e '\xE2\x94\x80')
-     echo "$prefix["$(GREEN $BRANCH)"]"
+     echo "$prefix["$(LIGHT_GRAY $BRANCH)"]"
 fi;
 }
 
 # heroku
 function WHICH_CLOUD {
-local symb=$(echo -e '\xE2\x98\x81\x0A')
-local prefix=$(echo -e '\xE2\x94\x80')
-case $HEROKU_CLOUD in
-    staging)
-        echo "$prefix["$(CYAN "$HEROKU_CLOUD")"]"
-        ;;
-    eu-west-1-a)
-        echo "$prefix["$(RED "$HEROKU_CLOUD")"]"
-        ;;
-    production)
-        echo "$prefix["$(RED "$HEROKU_CLOUD")"]"
-        ;;
-    *)
-        echo "$prefix["$(GREEN "$HEROKU_CLOUD")"]"
-	;;
-esac
+    case $HEROKU_CLOUD in
+        staging)
+            echo "$prefix["$(CYAN "$HEROKU_CLOUD")"]"
+            ;;
+        eu-west-1-a)
+            echo "$prefix["$(RED "$HEROKU_CLOUD")"]"
+            ;;
+        production)
+            echo "$prefix["$(RED "$HEROKU_CLOUD")"]"
+            ;;
+        *)
+            echo "$prefix["$(YELLOW "$HEROKU_CLOUD")"]"
+            ;;
+    esac
 }
 
 # is heroku sudo
 function IS_H_SUDO {
-local prefix=$(echo -e '\xE2\x94\x80')
-if [ $HEROKU_SUDO ]; then
-    echo "$prefix["$(RED h:sudo)"]"
-fi
+    if [ $HEROKU_SUDO ]; then
+        echo "$prefix["$(RED h:sudo)"]"
+    fi
 }
 
 # time
 function WHAT_TIME {
-local prefix=$(echo -e '\xE2\x94\x80')
-echo "$prefix["$(DARK_CYAN \\T)"]"
+    echo "$prefix["$(DARK_CYAN \\T)"]"
 }
 
 # pwd
 function WHICH_PATH {
-local prefix=$(echo -e '\xE2\x94\x80')
-echo "$prefix["$(GREEN \\w)"]"
+    echo "$prefix["$(DARK_YELLOW \\w)"]"
+}
+
+function IS_TMUX {
+    if [ "$TERM" = "screen" ] && [ -n $TMUX ]; then
+        TMUX_SESSION_NAME=$(tmux display-message -p "#S")
+        echo "$prefix["$(CYAN $TMUX_SESSION_NAME)"]"
+    fi;
 }
 
 # echo SYMB | hexdump
 function begin_top_line { echo -e "\xE2\x94\x8C\xE2\x94\x80"; }
-function prompt_symbol {
-## DOESN'T WORK!!???
-local LAST_EXIT="$?"
-if [ $LAST_EXIT != 0 ]; then
-    echo -e "\xE2\x94\x94\xE2\x9C\x97";
-else
-    echo -e "\xE2\x94\x94\xE2\x96\xB8";
-fi
-}
+function prompt_symbol { echo -e "\xE2\x94\x94\xE2\x96\xB8"; }
 
+PS1="$(begin_top_line)$(WHAT_TIME)$(WHICH_CLOUD)$(IS_H_SUDO)$(WHICH_PATH)$(GIT_BRANCH)$(IS_TMUX)\n$(prompt_symbol) "
 
-PROMPT_COMMAND='PS1="$(begin_top_line)$(WHAT_TIME)$(WHICH_CLOUD)$(IS_H_SUDO)$(WHICH_PATH)$(GIT_BRANCH)\n$(prompt_symbol) "'
-
+unset prefix

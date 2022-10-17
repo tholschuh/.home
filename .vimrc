@@ -4,7 +4,7 @@
 
 " ------------------------------------------------------------------
 " Plug initialization
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/site/autoload/')
 
 """ Editing
 Plug 'tpope/vim-surround'
@@ -36,8 +36,7 @@ Plug 'justinmk/vim-sneak'
 """ Search
 Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 """ Erlang
 Plug 'tpope/vim-dispatch'     "  required by other vim-erlang plugins
@@ -46,19 +45,6 @@ Plug 'vim-erlang/vim-erlang-compiler'
 
 """ Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-""" Haskell
-Plug 'dag/vim2hs'
-Plug 'eagletmt/ghcmod-vim'
-
-""" Idris
-Plug 'idris-hackers/idris-vim'
-
-" Pony
-Plug 'dleonard0/pony-vim-syntax'
-
-" Rust
-Plug 'rust-lang/rust.vim'
 
 """ Terraform
 Plug 'hashivim/vim-terraform'
@@ -94,7 +80,7 @@ set laststatus=2   " always show statusline
 set encoding=utf-8 " necessary to show unicode glyphs
 set t_Co=256       " Explicitly tell vim that the terminal supports 256 colors
 
-set completeopt-=preview " disable the stupid preview window
+set completeopt+=menuone,noinsert,noselect
 
 " save when leaving insert mode
 " http://blog.unixphilosopher.com/2015/02/a-more-betterer-autosave-in-vim.html
@@ -139,10 +125,17 @@ map <c-l> 2<c-w>>
 map <c-j> 2<c-w>+
 map <c-k> 2<c-w>-
 
+map <Leader>h <c-w>h
+map <Leader>j <c-w>j
+map <Leader>k <c-w>k
+map <Leader>l <c-w>l
+
+map q: :echo "you are not quitting, lol"<cr>
+
 " ------------------------------------------------------------------
 " NeoVim
 " ------------------------------------------------------------------
-set inccommand=split
+" set inccommand=split
 
 " ------------------------------------------------------------------
 " color config
@@ -187,6 +180,8 @@ highlight LineNr ctermbg=none ctermfg=darkgrey
 " golden-ratio
 " ------------------------------------------------------------------
 let g:golden_ratio_exclude_nonmodifiable=1
+let g:golden_ratio_wrap_ignored = 1
+let g:golden_ratio_autocommand = 0
 
 " ------------------------------------------------------------------
 " filebeagle config
@@ -212,10 +207,16 @@ autocmd FileType erlang setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
 autocmd FileType go setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
 
 " Change go defaults; save will do :GoImports
+let g:go_auto_type_info = 1
+let g:go_code_completion_enabled = 1
 let g:go_def_mode='gopls'
+let g:go_fmt_command = 'goimports'
 let g:go_info_mode='gopls'
-let g:go_fmt_command = "goimports"
+let g:go_jump_to_error = 0
+let g:go_list_height = 3
+let g:go_list_type = 'quickfix'
 let g:go_metalinter_autosave = 1
+let g:go_metalinter_command='golangci-lint'
 
 " ------------------------------------------------------------------
 " numbers.vim
